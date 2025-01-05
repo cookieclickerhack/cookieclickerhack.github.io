@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker Hack - Complete Game Commands & Cheats</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Complete list of Cookie Clicker hack commands and cheats. Easy to copy commands for cookies, achievements, upgrades, and more!">
+    <meta name="keywords" content="cookie clicker hack, cookie clicker cheats, cookie clicker commands, cookie clicker console commands">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Keep existing dark theme styles */
+        .dark-theme {
+            background: url('https://cookieclicker.me/img/bgBlue.webp');
+            color: #fff;
+        }
+
+        /* Add new styles for hack commands */
+        .command-category {
+            background: rgba(0,0,0,0.7);
+            border: 2px solid #4b2c23;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .command-item {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #4b2c23;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .command-description {
+            color: #e2b658;
+            margin-bottom: 5px;
+        }
+
+        .command-code {
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #fff;
+        }
+
+        .copy-btn {
+            background: linear-gradient(to bottom, #e8c766 0%, #b88430 100%);
+            border: 2px solid #4b2c23;
+            color: #4b2c23;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to bottom, #f3d677 0%, #c89441 100%);
+        }
+
+        #searchInput {
+            background: rgba(0,0,0,0.6);
+            border: 2px solid #4b2c23;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        #searchInput::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .category-title {
+            color: #e2b658;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4b2c23;
+            padding-bottom: 10px;
+        }
+
+        .success-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(40, 167, 69, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <div class="container py-5">
+        <h1 class="text-center mb-5" style="color: #e2b658;">Cookie Clicker Hack Commands</h1>
+        
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search for commands (e.g. 'cookies', 'achievements', 'upgrades')...">
+            </div>
+        </div>
+
+        <div id="commandsList">
+            <!-- Commands will be dynamically inserted here -->
+        </div>
+
+        <div id="copyToast" class="success-toast">
+            Command copied to clipboard!
+        </div>
+    </div>
+
+    <script>
+        // Define all commands from full.html organized by categories
+        const commandCategories = {
+            cookies: [
+                {
+                    description: "Add specific amount of cookies",
+                    command: "Game.cookies = (amount);",
+                    notes: "Sets exact amount of cookies"
+                },
+                {
+                    description: "Add cookies to existing amount", 
+                    command: "Game.cookies += (amount);",
+                    notes: "Adds to current cookie count"
+                },
+                {
+                    description: "Set cookies earned",
+                    command: "Game.cookiesEarned = (amount);",
+                    notes: "Sets total cookies earned"
+                },
+                {
+                    description: "Set cookies per second",
+                    command: "Game.cookiesPs = (amount);",
+                    notes: "Changes cookies per second rate"
+                },
+                {
+                    description: "Set mouse cookies per click",
+                    command: "Game.computedMouseCps = (amount);",
+                    notes: "Changes cookies per click"
+                }
+            ],
+            achievements: [
+                {
+                    description: "Unlock specific achievement",
+                    command: "Game.Win('achievement_name');",
+                    notes: "Replace achievement_name with actual achievement"
+                },
+                {
+                    description: "Unlock all achievements",
+                    command: "Game.SetAllAchievs(1);",
+                    notes: "Unlocks every achievement in the game"
+                },
+                {
+                    description: "Remove specific achievement",
+                    command: "Game.Achievements['achievement_name'].won = 0;",
+                    notes: "Removes a single achievement"
+                },
+                {
+                    description: "Remove all achievements",
+                    command: "Game.AchievementsById.forEach(function(e) { e.won = 0; });",
+                    notes: "Removes all achievements"
+                }
+            ],
+            upgrades: [
+                {
+                    description: "Unlock specific upgrade",
+                    command: "Game.Unlock('upgrade_name');",
+                    notes: "Unlocks but doesn't buy the upgrade"
+                },
+                {
+                    description: "Get all upgrades",
+                    command: "Game.SetAllUpgrade(1);",
+                    notes: "Unlocks and enables all upgrades"
+                },
+                {
+                    description: "Remove specific upgrade",
+                    command: "Game.Upgrades['upgrade_name'].bought = 0;",
+                    notes: "Removes a single upgrade"
+                },
+                {
+                    description: "Make all upgrades free",
+                    command: "Game.UpgradesById.forEach(function(e){e.basePrice=0;});Game.upgradesToRebuild=1;",
+                    notes: "Sets price of all upgrades to 0"
+                }
+            ],
+            buildings: [
+                {
+                    description: "Add cursors",
+                    command: "Game.Objects['Cursor'].amount = (amount);",
+                    notes: "Sets amount of cursors"
+                },
+                {
+                    description: "Add any building",
+                    command: "Game.Objects['building_name'].amount = (amount);",
+                    notes: "Replace building_name with actual building name"
+                }
+            ],
+            debug: [
+                {
+                    description: "Enable debug cheats",
+                    command: "Game.OpenSesame();",
+                    notes: "Unlocks debug menu and cheats"
+                },
+                {
+                    description: "Unlock everything",
+                    command: "Game.RuinTheFun();",
+                    notes: "Gives all upgrades, achievements, and 999,999,999,999,999 cookies"
+                },
+                {
+                    description: "Toggle debug upgrades",
+                    command: "Game.DebugUpgradeCpS();",
+                    notes: "Toggles debug upgrade effects"
+                }
+            ],
+            golden_cookies: [
+                {
+                    description: "Spawn golden cookie",
+                    command: "Game.shimmer.time = Game.shimmer.maxTime;",
+                    notes: "Forces a golden cookie to spawn"
+                },
+                {
+                    description: "Auto click golden cookies",
+                    command: "setInterval(function() { for(var h in Game.shimmers) { if(Game.shimmers[h].type == 'golden') Game.shimmers[h].pop() } }, 500);",
+                    notes: "Automatically clicks golden cookies every 0.5 seconds"
+                }
+            ],
+            heavenly: [
+                {
+                    description: "Add heavenly chips",
+                    command: "Game.heavenlyChips = (amount);",
+                    notes: "Sets amount of heavenly chips"
+                },
+                {
+                    description: "Maximum heavenly chips",
+                    command: "Game.cookiesReset = Number.MAX_VALUE; Game.CalculatePrestige();",
+                    notes: "Sets heavenly chips to maximum possible value"
+                }
+            ],
+            sugar_lumps: [
+                {
+                    description: "Add sugar lumps",
+                    command: "Game.lumps = (amount);",
+                    notes: "Sets amount of sugar lumps"
+                },
+                {
+                    description: "Change lump type",
+                    command: "Game.lumpCurrentType = (0-4);",
+                    notes: "0:normal, 1:bifurcated, 2:golden, 3:meaty, 4:caramelized"
+                },
+                {
+                    description: "Remove lump cooldown",
+                    command: "Game.canRefillLump = function() { return true; }",
+                    notes: "Removes cooldown on using sugar lumps"
+                }
+            ],
+            misc: [
+                {
+                    description: "Change game speed",
+                    command: "Game.fps = (amount);",
+                    notes: "Changes game speed (default is 30)"
+                },
+                {
+                    description: "Toggle particles",
+                    command: "Game.particles = 0/1;",
+                    notes: "0 to disable, 1 to enable particles"
+                },
+                {
+                    description: "Set milk progress",
+                    command: "Game.milkProgress = (amount);",
+                    notes: "Changes milk level progress"
+                },
+                {
+                    description: "Party mode",
+                    command: "Game.PARTY = true;",
+                    notes: "Enables party visual effects (WARNING: Flashing lights!)"
+                }
+            ],
+            debug_upgrades: [
+                {
+                    description: "Ultrascience",
+                    command: "Game.Upgrades['Ultrascience'].earn();",
+                    notes: "All researches take only 5 seconds"
+                },
+                {
+                    description: "Gold hoard",
+                    command: "Game.Upgrades['Gold hoard'].earn();", 
+                    notes: "Golden cookies appear every 0.6 seconds"
+                },
+                {
+                    description: "Neuromancy",
+                    command: "Game.Upgrades['Neuromancy'].earn();",
+                    notes: "Unlocks all upgrades and allows toggling them"
+                },
+                {
+                    description: "Perfect idling",
+                    command: "Game.Upgrades['Perfect idling'].earn();",
+                    notes: "Produces cookies even when game is closed"
+                },
+                {
+                    description: "Wrinkler doormat",
+                    command: "Game.Upgrades['Wrinkler doormat'].earn();",
+                    notes: "Wrinklers spawn 1000x more frequently"
+                },
+                {
+                    description: "Reindeer season",
+                    command: "Game.Upgrades['Reindeer season'].earn();",
+                    notes: "Reindeer spawn much faster"
+                },
+                {
+                    description: "Eternal seasons",
+                    command: "Game.Upgrades['Eternal seasons'].earn();",
+                    notes: "Unlocks Season Switcher without timer"
+                },
+                {
+                    description: "Magic shenanigans",
+                    command: "Game.Upgrades['Magic shenanigans'].earn();",
+                    notes: "Cookie production multiplied by 1000"
+                },
+                {
+                    description: "Occult obstruction",
+                    command: "Game.Upgrades['Occult obstruction'].earn();",
+                    notes: "Cookie production reduced to 0"
+                },
+                {
+                    description: "Glucose-charged air",
+                    command: "Game.Upgrades['Glucose-charged air'].earn();",
+                    notes: "Sugar lumps grow faster"
+                }
+            ],
+            grandmapocalypse: [
+                {
+                    description: "Start Grandmapocalypse",
+                    command: "Game.GrandmapocalypseStage = 1;",
+                    notes: "Starts the Grandmapocalypse event"
+                },
+                {
+                    description: "Set Grandmatriarch status",
+                    command: "Game.elderWrath = (0-3);",
+                    notes: "0:Appeased, 1:Awoken, 2:Displeased, 3:Angered"
+                },
+                {
+                    description: "Toggle Elder Pledge",
+                    command: "Game.pledgeT = (minutes * 1800);",
+                    notes: "Sets Elder Pledge time remaining"
+                }
+            ],
+            wrinklers: [
+                {
+                    description: "Pop all wrinklers",
+                    command: "Game.PopAllWrinklers();",
+                    notes: "Pops all active wrinklers"
+                },
+                {
+                    description: "Spawn wrinkler",
+                    command: "Game.SpawnWrinkler();",
+                    notes: "Spawns a new wrinkler"
+                }
+            ],
+            seasons: [
+                {
+                    description: "Toggle Christmas",
+                    command: "Game.ToggleSeason('christmas');",
+                    notes: "Toggles Christmas season"
+                },
+                {
+                    description: "Toggle Halloween",
+                    command: "Game.ToggleSeason('halloween');",
+                    notes: "Toggles Halloween season"
+                },
+                {
+                    description: "Toggle Valentine's",
+                    command: "Game.ToggleSeason('valentines');",
+                    notes: "Toggles Valentine's season"
+                },
+                {
+                    description: "Toggle Easter",
+                    command: "Game.ToggleSeason('easter');",
+                    notes: "Toggles Easter season"
+                }
+            ],
+            save: [
+                {
+                    description: "Save game",
+                    command: "Game.WriteSave(1);",
+                    notes: "Forces a game save"
+                },
+                {
+                    description: "Load save",
+                    command: "Game.LoadSave();",
+                    notes: "Loads last save"
+                },
+                {
+                    description: "Hard reset",
+                    command: "Game.HardReset(2);",
+                    notes: "WARNING: Completely resets game progress"
+                }
+            ],
+            utilities: [
+                {
+                    description: "Calculate future cookies",
+                    command: "alert(Game.cookies + (new Date('YYYY-MM-DD HH:MM:SS') - new Date().getTime()) / 1000 * Game.cookiesPs);",
+                    notes: "Shows cookies you'll have at a future time"
+                },
+                {
+                    description: "Golden cookie alert",
+                    command: "setInterval(function() { if (Game.shimmer.life > 0) document.title = '!' }, 100);",
+                    notes: "Changes page title when golden cookie appears"
+                },
+                {
+                    description: "Auto-click big cookie",
+                    command: "setInterval(function() { Game.ClickCookie(); }, 1);",
+                    notes: "Automatically clicks the big cookie"
+                }
+            ],
+            dungeons: [
+                {
+                    description: "Change dungeon level",
+                    command: "Game.Objects.Factory.dungeon.level = <level>;",
+                    notes: "Sets the dungeon difficulty level"
+                },
+                {
+                    description: "Speed up dungeon",
+                    command: "setInterval(function() { Game.Objects['Factory'].dungeon.timer = 0; }, <milliseconds>);",
+                    notes: "Makes hero move faster through dungeon"
+                }
+            ],
+            reindeer: [
+                {
+                    description: "Auto click reindeer",
+                    command: "setInterval(function() { Game.shimmers.forEach(function(shimmer) { if (shimmer.type == 'reindeer') { shimmer.pop() } }) }, 500);",
+                    notes: "Automatically clicks reindeer every 0.5 seconds"
+                },
+                {
+                    description: "Spawn reindeer (with stats)",
+                    command: "Game.shimmerTypes.reindeer.time = Game.shimmerTypes.reindeer.maxTime",
+                    notes: "Spawns reindeer that counts towards stats"
+                },
+                {
+                    description: "Spawn reindeer (no stats)",
+                    command: "new Game.shimmer('reindeer');",
+                    notes: "Spawns reindeer without counting stats"
+                }
+            ],
+            news_ticker: [
+                {
+                    description: "Add custom news ticker",
+                    command: `var customTickers=["<news1>","<news2>"];
+customTickersFunction=function() { return customTickers; }
+Game.customTickers.push(customTickersFunction);`,
+                    notes: "Adds custom messages to news ticker"
+                },
+                {
+                    description: "Add more news",
+                    command: "customTickers.push('<news>');",
+                    notes: "Adds another message to existing custom tickers"
+                }
+            ],
+            visual_effects: [
+                {
+                    description: "Add grandma face to big cookie",
+                    command: "Game.addClass('elderWrath');",
+                    notes: "Makes big cookie show grandma face"
+                },
+                {
+                    description: "Remove grandma face",
+                    command: "Game.removeClass('elderWrath');",
+                    notes: "Returns big cookie to normal"
+                },
+                {
+                    description: "Remove cookie click sound",
+                    command: "Game.playCookieClickSound=function(){return};",
+                    notes: "Disables sound when clicking big cookie"
+                }
+            ],
+            auto_buyers: [
+                {
+                    description: "Auto buy most efficient",
+                    command: `setInterval(function() {
+    var best = {efficiency: 0, purchase: null};
+    Game.ObjectsById.forEach(function(building) {
+        var efficiency = building.storedCps / building.price;
+        if (efficiency > best.efficiency && Game.cookies >= building.price) {
+            best = {efficiency: efficiency, purchase: building};
+        }
+    });
+    if (best.purchase) best.purchase.buy();
+}, 1000);`,
+                    notes: "Automatically buys most efficient building every second"
+                },
+                {
+                    description: "Auto buy upgrades",
+                    command: `setInterval(function() {
+    Game.UpgradesById.forEach(function(upgrade) {
+        if (upgrade.canBuy() && !upgrade.bought) upgrade.buy();
+    });
+}, 1000);`,
+                    notes: "Automatically buys all available upgrades every second"
+                }
+            ],
+            prestige: [
+                {
+                    description: "Set prestige level",
+                    command: "Game.prestige = []; Game.prestige['Heavenly chips'] = <amount>; Game.prestige.ready = 1; Game.recalculateGains = 1;",
+                    notes: "Sets prestige level and heavenly chips"
+                },
+                {
+                    description: "Permanent heavenly chips",
+                    command: "var nhc = <amount>; Game.cookiesReset = nhc * (nhc + 1) * 1e12 / 2; Game.CalculatePrestige();",
+                    notes: "Sets permanent heavenly chips amount"
+                },
+                {
+                    description: "Maximum prestige",
+                    command: "Game.cookiesReset = Number.MAX_VALUE; Game.CalculatePrestige();",
+                    notes: "Sets prestige to maximum possible value"
+                }
+            ],
+            research: [
+                {
+                    description: "Instant research",
+                    command: "setInterval(function() { Game.researchT = 0; }, 1);",
+                    notes: "Makes all research complete instantly"
+                },
+                {
+                    description: "Skip research time",
+                    command: "Game.researchT = 0;",
+                    notes: "Completes current research instantly"
+                }
+            ],
+            krumblor: [
+                {
+                    description: "Set dragon level",
+                    command: "Game.dragonLevel = <level>;",
+                    notes: "Sets dragon level (0-24)"
+                },
+                {
+                    description: "Train dragon instantly",
+                    command: "Game.dragonAura = <aura_number>;",
+                    notes: "Sets dragon aura without training"
+                }
+            ],
+            santa: [
+                {
+                    description: "Set Santa level",
+                    command: "Game.santaLevel = <level>;",
+                    notes: "Sets Santa level (0-14)"
+                },
+                {
+                    description: "Unlock all Santa items",
+                    command: "for(var i in Game.SantaDrops){Game.Unlock(Game.SantaDrops[i]);}",
+                    notes: "Unlocks all Santa-related items"
+                }
+            ],
+            minigames: [
+                {
+                    description: "Garden: Unlock all seeds",
+                    command: "for(var i in Game.Objects['Farm'].minigame.plants){Game.Objects['Farm'].minigame.unlockSeed(i);}",
+                    notes: "Unlocks all garden seeds"
+                },
+                {
+                    description: "Stock Market: Add cookies",
+                    command: "Game.Objects['Bank'].minigame.brokers = 100; Game.Objects['Bank'].minigame.money = 999999999999;",
+                    notes: "Adds max brokers and money to Stock Market"
+                },
+                {
+                    description: "Pantheon: Fill magic",
+                    command: "Game.Objects['Temple'].minigame.magic = Game.Objects['Temple'].minigame.magicM;",
+                    notes: "Fills Pantheon magic meter"
+                },
+                {
+                    description: "Grimoire: Fill magic",
+                    command: "Game.Objects['Wizard tower'].minigame.magic = Game.Objects['Wizard tower'].minigame.magicM;",
+                    notes: "Fills Grimoire magic meter"
+                }
+            ],
+            advanced: [
+                {
+                    description: "Infinite cookies per click",
+                    command: "Game.computedMouseCps = Infinity;",
+                    notes: "Sets cookies per click to infinity"
+                },
+                {
+                    description: "Infinite cookies per second",
+                    command: "Game.cookiesPs = Infinity;",
+                    notes: "Sets cookies per second to infinity"
+                },
+                {
+                    description: "Unlock all debug upgrades",
+                    command: "Game.GetAllDebugs();",
+                    notes: "Unlocks all debug/cheating upgrades"
+                },
+                {
+                    description: "Complete ruin the fun",
+                    command: "Game.RuinTheFun(1);",
+                    notes: "Unlocks everything possible in the game"
+                }
+            ],
+            experimental: [
+                {
+                    description: "Force golden cookie effects",
+                    command: "Game.shimmerTypes.golden.force = '<effect_name>';",
+                    notes: "Forces next golden cookie to have specific effect"
+                },
+                {
+                    description: "Instant building special",
+                    command: "Game.Objects['<building_name>'].special();",
+                    notes: "Triggers building special effect instantly"
+                },
+                {
+                    description: "Modify game time",
+                    command: "Game.time = <timestamp>;",
+                    notes: "Changes game internal time (use with caution)"
+                }
+            ],
+            buildings_special: [
+                {
+                    description: "Set building level",
+                    command: "Game.Objects['<building_name>'].level = <level>;",
+                    notes: "Sets level of specific building"
+                },
+                {
+                    description: "Max all building levels",
+                    command: "Game.ObjectsById.forEach(function(b){b.level=9999;});",
+                    notes: "Sets all buildings to max level"
+                },
+                {
+                    description: "Free building upgrades",
+                    command: "Game.ObjectsById.forEach(function(b){b.levelPrice=0;});",
+                    notes: "Makes all building upgrades free"
+                }
+            ],
+            minigame_extras: [
+                {
+                    description: "Garden: Instant growth",
+                    command: "Game.Objects['Farm'].minigame.nextStep=0;",
+                    notes: "Makes plants grow instantly"
+                },
+                {
+                    description: "Garden: Perfect soil",
+                    command: "Game.Objects['Farm'].minigame.soil = 4;",
+                    notes: "Sets garden soil to most effective type"
+                },
+                {
+                    description: "Stock Market: Manipulate prices",
+                    command: "Game.Objects['Bank'].minigame.goods.forEach(g => g.val = 100);",
+                    notes: "Sets all stock values to maximum"
+                },
+                {
+                    description: "Pantheon: No swap cooldown",
+                    command: "Game.Objects['Temple'].minigame.swapT = 0;",
+                    notes: "Removes cooldown on swapping gods"
+                }
+            ],
+            game_stats: [
+                {
+                    description: "Reset stats",
+                    command: "Game.ResetWhole();",
+                    notes: "Resets all game statistics"
+                },
+                {
+                    description: "Set cookies baked all time",
+                    command: "Game.cookiesReset = <amount>;",
+                    notes: "Sets total cookies baked across all runs"
+                },
+                {
+                    description: "Set golden cookie clicks",
+                    command: "Game.goldenClicksLocal = <amount>;",
+                    notes: "Sets number of golden cookies clicked"
+                }
+            ],
+            browser_tricks: [
+                {
+                    description: "Speed up game time",
+                    command: "var date = new Date(); date.setFullYear(date.getFullYear() + 1); Game.time = date.getTime();",
+                    notes: "Advances game time by 1 year"
+                },
+                {
+                    description: "Offline production",
+                    command: "Game.LoadSave(); Game.CloseNotes(); Game.ClosePrompt();",
+                    notes: "Triggers offline production calculation"
+                },
+                {
+                    description: "Force save backup",
+                    command: "Game.ExportSave(); Game.localStorageSet('BackupSave', Game.lastExport);",
+                    notes: "Creates backup of current save"
+                }
+            ],
+            debug_tools: [
+                {
+                    description: "Debug display",
+                    command: "Game.debugTimersOn = 1;",
+                    notes: "Shows debug timing information"
+                },
+                {
+                    description: "Debug menu",
+                    command: "Game.DebugMenu();",
+                    notes: "Opens the debug menu"
+                },
+                {
+                    description: "Log game object",
+                    command: "console.log(Game);",
+                    notes: "Outputs full game state to console"
+                }
+            ],
+            achievements_special: [
+                {
+                    description: "Shadow achievements",
+                    command: "Game.Win('Just plain lucky'); Game.Win('Last Chance to See'); Game.Win('Four-leaf cookie');",
+                    notes: "Unlocks special shadow achievements"
+                },
+                {
+                    description: "Speed baking achievements",
+                    command: "Game.Win('Speed baking I'); Game.Win('Speed baking II'); Game.Win('Speed baking III');",
+                    notes: "Unlocks speed baking achievements"
+                },
+                {
+                    description: "True Neverclick",
+                    command: "Game.Win('True Neverclick');",
+                    notes: "Get 1 million cookies without clicking the big cookie"
+                }
+            ],
+            cookie_chains: [
+                {
+                    description: "Force cookie chain",
+                    command: "Game.shimmerTypes.golden.chain = true;",
+                    notes: "Forces next golden cookie to start a chain"
+                },
+                {
+                    description: "Maximum chain length",
+                    command: "Game.shimmerTypes.golden.chainLength = 100;",
+                    notes: "Sets maximum cookie chain length"
+                }
+            ],
+            game_modes: [
+                {
+                    description: "Born Again mode",
+                    command: "Game.BornAgain();",
+                    notes: "Starts a Born Again run"
+                },
+                {
+                    description: "Challenge mode",
+                    command: "Game.StartChallengeMode();",
+                    notes: "Starts a Challenge run"
+                }
+            ],
+            console_tools: [
+                {
+                    description: "Console history",
+                    command: "Game.LoadMod('https://cookieclicker.wiki/mods/console-history.js');",
+                    notes: "Loads console history mod"
+                },
+                {
+                    description: "Command logger",
+                    command: "Game.LoadMod('https://cookieclicker.wiki/mods/command-logger.js');",
+                    notes: "Loads command logging mod"
+                }
+            ],
+            backup_restore: [
+                {
+                    description: "Export save to file",
+                    command: `(function() {
+    var save = Game.WriteSave(1);
+    var blob = new Blob([save], {type: 'text/plain'});
+    var a = document.createElement('a');
+    a.download = 'CookieClickerSave.txt';
+    a.href = URL.createObjectURL(blob);
+    a.click();
+})();`,
+                    notes: "Exports save to downloadable file"
+                },
+                {
+                    description: "Auto backup saves",
+                    command: `setInterval(function() {
+    Game.WriteSave(1);
+    Game.localStorageSet('BackupSave', Game.lastExport);
+}, 300000);`,
+                    notes: "Auto backs up save every 5 minutes"
+                }
+            ],
+            performance: [
+                {
+                    description: "Reduce animations",
+                    command: "Game.prefs.fancy = 0; Game.prefs.particles = 0;",
+                    notes: "Disables fancy graphics for better performance"
+                },
+                {
+                    description: "Optimize game",
+                    command: "Game.prefs.timeout = 0; Game.fps = 15;",
+                    notes: "Reduces game speed for better performance"
+                }
+            ],
+            experimental_features: [
+                {
+                    description: "Beta features",
+                    command: "Game.beta = 1;",
+                    notes: "Enables beta features (use with caution)"
+                },
+                {
+                    description: "Debug display",
+                    command: "Game.sesame = 1;",
+                    notes: "Shows additional debug information"
+                }
+            ],
+            building_upgrades: [
+                {
+                    description: "Get all building upgrades",
+                    command: "Game.ObjectsById.forEach(function(b){b.buyFree(999);});",
+                    notes: "Gets all upgrades for all buildings"
+                },
+                {
+                    description: "Max building tier",
+                    command: "Game.ObjectsById.forEach(function(b){b.level=9999;b.levelUp();});",
+                    notes: "Maximizes tier level of all buildings"
+                }
+            ],
+            golden_cookie_effects: [
+                {
+                    description: "Force Frenzy",
+                    command: "Game.gainBuff('frenzy',77777);",
+                    notes: "Gives Frenzy effect for 77,777 seconds"
+                },
+                {
+                    description: "Force Click Frenzy",
+                    command: "Game.gainBuff('click frenzy',77777);",
+                    notes: "Gives Click Frenzy effect for 77,777 seconds"
+                },
+                {
+                    description: "Force Elder Frenzy",
+                    command: "Game.gainBuff('elder frenzy',77777);",
+                    notes: "Gives Elder Frenzy effect for 77,777 seconds"
+                },
+                {
+                    description: "Force Building Special",
+                    command: "Game.gainBuff('building buff',77777);",
+                    notes: "Gives Building Special effect for 77,777 seconds"
+                }
+            ],
+            garden_extras: [
+                {
+                    description: "Unlock garden",
+                    command: "Game.Objects['Farm'].minigame.unlock();",
+                    notes: "Unlocks garden minigame"
+                },
+                {
+                    description: "Set soil type",
+                    command: "Game.Objects['Farm'].minigame.soil = <0-4>;",
+                    notes: "Changes soil type (0:dirt, 1:fertilizer, 2:clay, 3:pebbles, 4:wood chips)"
+                },
+                {
+                    description: "Mature all plants",
+                    command: "Game.Objects['Farm'].minigame.forEachTile(x=>x.age=100);",
+                    notes: "Makes all plants fully mature"
+                }
+            ],
+            pantheon_extras: [
+                {
+                    description: "Unlock all gods",
+                    command: "Game.Objects['Temple'].minigame.gods.forEach(g=>g.slot=0);",
+                    notes: "Unlocks all pantheon gods"
+                },
+                {
+                    description: "Max worship swaps",
+                    command: "Game.Objects['Temple'].minigame.swaps=100;",
+                    notes: "Maximizes available god swaps"
+                }
+            ],
+            grimoire_extras: [
+                {
+                    description: "Free spell casting",
+                    command: "Game.Objects['Wizard tower'].minigame.getSpellCost=_=>0;",
+                    notes: "Makes all spells free to cast"
+                },
+                {
+                    description: "No backfire",
+                    command: "Game.Objects['Wizard tower'].minigame.getFailChance=_=>0;",
+                    notes: "Removes spell backfire chance"
+                }
+            ],
+            stock_market_extras: [
+                {
+                    description: "Max stock value",
+                    command: "Game.Objects['Bank'].minigame.goods.forEach(g=>g.val=100);",
+                    notes: "Sets all stocks to maximum value"
+                },
+                {
+                    description: "Unlock all stocks",
+                    command: "Game.Objects['Bank'].minigame.goods.forEach(g=>g.active=1);",
+                    notes: "Unlocks all stock market goods"
+                }
+            ],
+            achievement_extras: [
+                {
+                    description: "Hardcore achievements",
+                    command: "Game.Win('Hardcore'); Game.Win('Neverclick');",
+                    notes: "Unlocks hardcore mode achievements"
+                },
+                {
+                    description: "Season achievements",
+                    command: "Game.Win('Ghostly'); Game.Win('Festive'); Game.Win('Lovely');",
+                    notes: "Unlocks seasonal achievements"
+                }
+            ],
+            debug_extras: [
+                {
+                    description: "Debug mode",
+                    command: "Game.DebugUpgradeCpS(); Game.DebugUpgradeCpC();",
+                    notes: "Enables full debug mode"
+                },
+                {
+                    description: "Debug display",
+                    command: "Game.sesame = 1; Game.debugTimersOn = 1;",
+                    notes: "Shows all debug information"
+                }
+            ],
+            game_speed: [
+                {
+                    description: "Speed up game",
+                    command: "Game.fps = 1000;",
+                    notes: "Makes game run much faster"
+                },
+                {
+                    description: "Normal speed",
+                    command: "Game.fps = 30;",
+                    notes: "Returns game to normal speed"
+                }
+            ],
+            save_management: [
+                {
+                    description: "Export save string",
+                    command: "Game.ExportSave();",
+                    notes: "Copies save string to clipboard"
+                },
+                {
+                    description: "Import save",
+                    command: "Game.ImportSave();",
+                    notes: "Opens import save prompt"
+                },
+                {
+                    description: "Clear save",
+                    command: "Game.HardReset(2);",
+                    notes: "WARNING: Completely erases save data"
+                }
+            ],
+            milk: [
+                {
+                    description: "Set milk type",
+                    command: "Game.milkType = <number>;",
+                    notes: "Changes milk type (0-vanilla, 1-chocolate, etc)"
+                },
+                {
+                    description: "Max milk progress",
+                    command: "Game.milkProgress = 100;",
+                    notes: "Sets milk progress to maximum"
+                }
+            ],
+            ascension: [
+                {
+                    description: "Force ascension",
+                    command: "Game.Ascend(true);",
+                    notes: "Forces immediate ascension"
+                },
+                {
+                    description: "Skip ascension animation",
+                    command: "Game.AscendTimer = 0;",
+                    notes: "Skips ascension animation"
+                },
+                {
+                    description: "Set prestige level",
+                    command: "Game.prestige = <amount>; Game.CalculatePrestige(); Game.recalculateGains = 1;",
+                    notes: "Sets prestige level and recalculates"
+                }
+            ],
+            automation_advanced: [
+                {
+                    description: "Auto click everything",
+                    command: `setInterval(function() {
+    // Click big cookie
+    Game.ClickCookie();
+    // Click all golden cookies and reindeer
+    Game.shimmers.forEach(s => s.pop());
+    // Buy all available upgrades
+    Game.UpgradesById.forEach(u => { if (u.canBuy() && !u.bought) u.buy(); });
+    // Buy all available buildings
+    Game.ObjectsById.forEach(b => { while (Game.cookies >= b.price) b.buy(1); });
+    // Pop wrinklers
+    Game.wrinklers.forEach(w => { if (w.phase == 2) w.hp = 0; });
+}, 10);`,
+                    notes: "Full automation - clicks, buys, and collects everything"
+                },
+                {
+                    description: "Auto click golden cookies with sound",
+                    command: `setInterval(function() {
+    Game.shimmers.forEach(function(shimmer) {
+        if (shimmer.type == 'golden') {
+            shimmer.pop();
+            new Audio('https://freesound.org/data/previews/220/220206_0_35.mp3').play();
+        }
+    });
+}, 500);`,
+                    notes: "Clicks golden cookies with notification sound"
+                }
+            ],
+            visual_effects_extra: [
+                {
+                    description: "Rainbow cookies",
+                    command: "Game.rainbowCookies = true;",
+                    notes: "Makes big cookie cycle through colors"
+                },
+                {
+                    description: "Permanent particles",
+                    command: "Game.particleAdd = function() { return true; };",
+                    notes: "Makes particle effects permanent"
+                },
+                {
+                    description: "Custom background",
+                    command: "Game.Background.canvas.style.backgroundImage = 'url(your_image_url)';",
+                    notes: "Changes game background image"
+                }
+            ],
+            minigame_advanced: [
+                {
+                    description: "Garden: Perfect growth",
+                    command: `setInterval(function() {
+    if (Game.Objects['Farm'].minigame) {
+        Game.Objects['Farm'].minigame.nextStep = 0;
+        Game.Objects['Farm'].minigame.computeEffs();
+    }
+}, 100);`,
+                    notes: "Perfect plant growth conditions"
+                },
+                {
+                    description: "Stock Market: Perfect profits",
+                    command: `setInterval(function() {
+    if (Game.Objects['Bank'].minigame) {
+        Game.Objects['Bank'].minigame.goods.forEach(g => {
+            if (g.val < 10) g.val = 100;
+        });
+    }
+}, 1000);`,
+                    notes: "Ensures maximum stock market profits"
+                }
+            ],
+            debug_complete: [
+                {
+                    description: "Complete debug setup",
+                    command: `Game.LoadMod('https://cookieclicker.wiki/mods/debug-all.js');
+Game.OpenSesame();
+Game.sesame = 1;
+Game.debugTimersOn = 1;
+Game.debugUpgradeCpS();`,
+                    notes: "Enables all debug features at once"
+                },
+                {
+                    description: "Debug info overlay",
+                    command: "Game.debugInfo = true; Game.debugTimersOn = 1;",
+                    notes: "Shows complete debug information overlay"
+                }
+            ],
+            wrinkler_advanced: [
+                {
+                    description: "Max wrinkler count",
+                    command: "Game.getWrinklersMax = function() { return 999; };",
+                    notes: "Allows unlimited wrinklers"
+                },
+                {
+                    description: "Instant wrinkler pop",
+                    command: "Game.wrinklers.forEach(w => w.hp = 0);",
+                    notes: "Instantly pops all wrinklers"
+                },
+                {
+                    description: "Force shiny wrinkler",
+                    command: "Game.SpawnWrinkler(true);",
+                    notes: "Spawns a shiny wrinkler"
+                }
+            ],
+            heavenly_upgrades: [
+                {
+                    description: "Unlock all heavenly upgrades",
+                    command: "Game.heavenlyUpgrades.forEach(u => Game.UnlockHeavenly(u.name));",
+                    notes: "Unlocks all heavenly upgrades"
+                },
+                {
+                    description: "Reset heavenly chips",
+                    command: "Game.heavenlyChips = 0; Game.heavenlyChipsSpent = 0;",
+                    notes: "Resets heavenly chips to 0"
+                }
+            ],
+            cookie_production: [
+                {
+                    description: "Multiply CpS",
+                    command: "Game.cookiesPs *= 1000;",
+                    notes: "Multiplies current CpS by 1000"
+                },
+                {
+                    description: "Set base CpS",
+                    command: "Game.globalCpsMult = 999999;",
+                    notes: "Sets base cookie production multiplier"
+                },
+                {
+                    description: "Max cookie production",
+                    command: `Game.cookiesPs = Number.MAX_VALUE;
+Game.computedMouseCps = Number.MAX_VALUE;
+Game.globalCpsMult = Number.MAX_VALUE;`,
+                    notes: "Maximizes all cookie production values"
+                }
+            ],
+            building_management: [
+                {
+                    description: "Free buildings",
+                    command: "Game.ObjectsById.forEach(b => b.basePrice = 0);",
+                    notes: "Makes all buildings free"
+                },
+                {
+                    description: "Max building efficiency",
+                    command: "Game.ObjectsById.forEach(b => b.storedCps *= 1000);",
+                    notes: "Multiplies all building efficiency by 1000"
+                },
+                {
+                    description: "Unlock all building tiers",
+                    command: "Game.ObjectsById.forEach(b => { b.levelAchiev10 = true; b.levelAchiev100 = true; });",
+                    notes: "Unlocks all building tier achievements"
+                }
+            ],
+            game_mechanics: [
+                {
+                    description: "Disable wrinkler eat",
+                    command: "Game.wrinklers.forEach(w => w.sucked = 0);",
+                    notes: "Prevents wrinklers from eating cookies"
+                },
+                {
+                    description: "Perfect golden cookie luck",
+                    command: "Game.shimmerTypes.golden.minTime = Game.shimmerTypes.golden.maxTime;",
+                    notes: "Forces best possible golden cookie outcomes"
+                },
+                {
+                    description: "Perfect random drops",
+                    command: "Math.random = function() { return 0.99999; };",
+                    notes: "Forces best possible random outcomes (use carefully)"
+                }
+            ],
+            seasonal_extras: [
+                {
+                    description: "Unlock all seasonal content",
+                    command: `Game.seasonTriggerBasePrice = 0;
+['christmas','halloween','valentines','easter'].forEach(s => Game.Unlock(Game.seasons[s].trigger));`,
+                    notes: "Unlocks all seasonal content and makes switches free"
+                },
+                {
+                    description: "Force seasonal drops",
+                    command: "Game.dropRateMult = 999999;",
+                    notes: "Makes seasonal items drop very frequently"
+                }
+            ],
+            special_combos: [
+                {
+                    description: "Ultimate combo",
+                    command: `// Max everything
+Game.cookies = Number.MAX_VALUE;
+Game.cookiesPs = Number.MAX_VALUE;
+Game.cookiesEarned = Number.MAX_VALUE;
+Game.heavenlyChips = Number.MAX_VALUE;
+Game.prestige = Number.MAX_VALUE;
+Game.CalculatePrestige();
+Game.lumps = 999999;
+// Unlock everything
+Game.SetAllAchievs(1);
+Game.SetAllUpgrade(1);
+// Max buildings
+Game.ObjectsById.forEach(b => {
+    b.amount = 999;
+    b.level = 10;
+    b.levelUp();
+});`,
+                    notes: "Complete game maximizer combo"
+                },
+                {
+                    description: "Golden cookie master combo",
+                    command: `// Force golden cookies
+Game.shimmerTypes.golden.minTime = 0;
+Game.shimmerTypes.golden.maxTime = 1;
+// Auto click
+setInterval(() => Game.shimmers.forEach(s => s.pop()), 500);
+// Force best effects
+Game.shimmerTypes.golden.chain = true;
+Game.gainBuff('frenzy',999999);
+Game.gainBuff('click frenzy',999999);`,
+                    notes: "Ultimate golden cookie combo"
+                }
+            ],
+            minigame_master: [
+                {
+                    description: "Master all minigames",
+                    command: `// Garden
+if(Game.Objects['Farm'].minigame) {
+    Game.Objects['Farm'].minigame.plants.forEach(p => Game.Objects['Farm'].minigame.unlockSeed(p));
+    Game.Objects['Farm'].minigame.soil = 4;
+}
+// Pantheon
+if(Game.Objects['Temple'].minigame) {
+    Game.Objects['Temple'].minigame.gods.forEach(g => g.slot = 0);
+    Game.Objects['Temple'].minigame.swaps = 100;
+}
+// Grimoire
+if(Game.Objects['Wizard tower'].minigame) {
+    Game.Objects['Wizard tower'].minigame.magic = Game.Objects['Wizard tower'].minigame.magicM;
+}
+// Stock Market
+if(Game.Objects['Bank'].minigame) {
+    Game.Objects['Bank'].minigame.brokers = 100;
+    Game.Objects['Bank'].minigame.money = 999999999999;
+}`,
+                    notes: "Maximizes all minigames at once"
+                }
+            ],
+            achievement_master: [
+                {
+                    description: "Unlock all special achievements",
+                    command: `// Shadow achievements
+Game.Win('Just plain lucky');
+Game.Win('Last Chance to See');
+Game.Win('Four-leaf cookie');
+// Speed achievements
+Game.Win('Speed baking I');
+Game.Win('Speed baking II');
+Game.Win('Speed baking III');
+// Special achievements
+Game.Win('True Neverclick');
+Game.Win('Hardcore');
+Game.Win('Here you go');
+Game.Win('Cheated cookies taste awful');`,
+                    notes: "Unlocks all hard-to-get achievements"
+                }
+            ],
+            debug_master: [
+                {
+                    description: "Complete debug setup",
+                    command: `// Enable all debug features
+Game.OpenSesame();
+Game.debugTimersOn = 1;
+Game.sesame = 1;
+Game.debugInfo = true;
+// Debug upgrades
+Game.DebugUpgradeCpS();
+Game.DebugUpgradeCpC();
+// Debug display
+Game.debugTimersOn = 1;
+Game.debugLayersByName.debug.visible = true;`,
+                    notes: "Enables all debug features with optimal settings"
+                }
+            ],
+            building_specials: [
+                {
+                    description: "Trigger all building specials",
+                    command: `Game.ObjectsById.forEach(function(b) {
+    if(b.special) b.special();
+});`,
+                    notes: "Activates special ability of all buildings"
+                },
+                {
+                    description: "Max building levels",
+                    command: `Game.ObjectsById.forEach(function(b) {
+    b.level = 9999;
+    b.levelUp();
+    b.refresh();
+});`,
+                    notes: "Sets all buildings to maximum level"
+                }
+            ],
+            minigame_cheats: [
+                {
+                    description: "Garden: Immortal plants",
+                    command: `if(Game.Objects['Farm'].minigame) {
+    Game.Objects['Farm'].minigame.nextStep = function() { return false; };
+    Game.Objects['Farm'].minigame.computeEffs = function() { return false; };
+}`,
+                    notes: "Makes plants never die or decay"
+                },
+                {
+                    description: "Pantheon: Infinite swaps",
+                    command: `if(Game.Objects['Temple'].minigame) {
+    Game.Objects['Temple'].minigame.swapT = 0;
+    Game.Objects['Temple'].minigame.swaps = 100;
+}`,
+                    notes: "Removes swap cooldown and adds max swaps"
+                },
+                {
+                    description: "Grimoire: Perfect spells",
+                    command: `if(Game.Objects['Wizard tower'].minigame) {
+    Game.Objects['Wizard tower'].minigame.getFailChance = function() { return 0; };
+    Game.Objects['Wizard tower'].minigame.getSpellCost = function() { return 0; };
+}`,
+                    notes: "Makes spells always succeed and cost nothing"
+                }
+            ],
+            combo_packs: [
+                {
+                    description: "Full automation pack",
+                    command: `// Auto click big cookie
+setInterval(Game.ClickCookie, 1);
+// Auto click golden cookies and reindeer
+setInterval(() => Game.shimmers.forEach(s => s.pop()), 500);
+// Auto buy best buildings
+setInterval(() => {
+    Game.ObjectsById.sort((a,b) => (b.storedCps/b.price - a.storedCps/a.price))
+        .forEach(b => { if(Game.cookies >= b.price) b.buy(1); });
+}, 1000);
+// Auto buy upgrades
+setInterval(() => {
+    Game.UpgradesById.forEach(u => { if(u.canBuy() && !u.bought) u.buy(); });
+}, 1000);
+// Auto pop wrinklers
+setInterval(() => Game.wrinklers.forEach(w => { if(w.phase > 0) w.hp = 0; }), 5000);`,
+                    notes: "Complete automation package for idle play"
+                },
+                {
+                    description: "Maximum gains pack",
+                    command: `// Max cookies and production
+Game.cookies = Number.MAX_VALUE;
+Game.cookiesPs = Number.MAX_VALUE;
+Game.cookiesEarned = Number.MAX_VALUE;
+// Max prestige and heavenly
+Game.prestige = Number.MAX_VALUE;
+Game.heavenlyChips = Number.MAX_VALUE;
+Game.CalculatePrestige();
+// Max sugar lumps
+Game.lumps = 999999;
+// Unlock everything
+Game.SetAllAchievs(1);
+Game.SetAllUpgrade(1);
+// Max buildings
+Game.ObjectsById.forEach(b => {
+    b.amount = 999;
+    b.level = 9999;
+    b.levelUp();
+});
+// Enable all debug features
+Game.OpenSesame();
+Game.debugTimersOn = 1;`,
+                    notes: "Complete maximization package"
+                }
+            ],
+            quality_of_life: [
+                {
+                    description: "Fast animations",
+                    command: `Game.prefs.fancy = 0;
+Game.prefs.particles = 0;
+Game.prefs.numbers = 0;
+Game.fps = 15;`,
+                    notes: "Improves game performance by reducing animations"
+                },
+                {
+                    description: "Auto save backup",
+                    command: `setInterval(() => {
+    Game.WriteSave(1);
+    Game.localStorageSet('BackupSave', Game.lastExport);
+}, 300000);`,
+                    notes: "Creates backup save every 5 minutes"
+                },
+                {
+                    description: "Better visual feedback",
+                    command: `Game.Notify = function(title, desc, pic, quick) {
+    console.log('[' + title + '] ' + desc);
+};
+Game.particleAdd = function() { return false; };`,
+                    notes: "Reduces visual clutter and logs important events to console"
+                }
+            ],
+            building_combos: [
+                {
+                    description: "Ultimate building setup",
+                    command: `// Max all buildings
+Game.ObjectsById.forEach(b => {
+    b.amount = 999;
+    b.level = 9999;
+    b.levelUp();
+    b.refresh();
+    if(b.minigame && b.minigame.launch) b.minigame.launch();
+});
+// Free buildings
+Game.ObjectsById.forEach(b => b.basePrice = 0);
+// Max efficiency
+Game.ObjectsById.forEach(b => b.storedCps *= 9999);`,
+                    notes: "Complete building maximizer combo"
+                }
+            ],
+            golden_cookie_master: [
+                {
+                    description: "Ultimate golden cookie setup",
+                    command: `// Force frequent spawns
+Game.shimmerTypes.golden.minTime = 0;
+Game.shimmerTypes.golden.maxTime = 1;
+// Best effects
+Game.shimmerTypes.golden.chain = true;
+Game.chimeType = 1;
+Game.goldenCookieForce = 1;
+
+// Max all related upgrades
+Game.Upgrades['Lucky day'].earn();
+Game.Upgrades['Serendipity'].earn();
+Game.Upgrades['Get lucky'].earn();
+
+// Perfect effects
+Game.gainBuff('frenzy', 999999);
+Game.gainBuff('click frenzy', 999999);
+Game.gainBuff('dragon harvest', 999999);
+Game.gainBuff('elder frenzy', 999999);
+Game.gainBuff('building buff', 999999);
+
+// Auto clicker with stats
+let goldenStats = {clicks: 0, chains: 0};
+setInterval(() => {
+    Game.shimmers.forEach(s => {
+        if(s.type == 'golden') {
+            s.pop();
+            goldenStats.clicks++;
+            if(s.chain) goldenStats.chains++;
+        }
+    });
+}, 500);`,
+                    notes: "Perfect golden cookie setup with auto-clicking and statistics"
+                }
+            ],
+            minigame_ultimate: [
+                {
+                    description: "Ultimate garden setup",
+                    command: `if(Game.Objects['Farm'].minigame) {
+    // Unlock all
+    Game.Objects['Farm'].minigame.plants.forEach(p => {
+        Game.Objects['Farm'].minigame.unlockSeed(p.id);
+    });
+
+    // Perfect conditions
+    Game.Objects['Farm'].minigame.soil = 4;
+    Game.Objects['Farm'].minigame.nextSoil = 4;
+
+    // No plant death
+    Game.Objects['Farm'].minigame.nextStep = function() { return false; };
+    
+    // Auto mature plants
+    Game.Objects['Farm'].minigame.forEachTile(tile => {
+        if(tile.plant) {
+            tile.age = 100;
+            tile.mature = 1;
+        }
+    });
+
+    // Unlock garden upgrades
+    Game.UpgradesById.forEach(u => {
+        if(u.pool === 'garden') {
+            u.unlocked = 1;
+            u.bought = 1;
+        }
+    });
+}`,
+                    notes: "Complete garden mastery with all plants"
+                },
+                {
+                    description: "Ultimate pantheon setup",
+                    command: `if(Game.Objects['Temple'].minigame) {
+    // Unlock all gods
+    Game.Objects['Temple'].minigame.gods.forEach(g => g.slot = 0);
+    // Max swaps
+    Game.Objects['Temple'].minigame.swaps = 100;
+    Game.Objects['Temple'].minigame.swapT = 0;
+    // Best slots
+    Game.Objects['Temple'].minigame.slot[0] = 10; // Godzamok
+    Game.Objects['Temple'].minigame.slot[1] = 5;  // Mokalsium
+    Game.Objects['Temple'].minigame.slot[2] = 7;  // Jeremy
+}`,
+                    notes: "Perfect pantheon setup with best gods"
+                }
+            ],
+            performance_boost: [
+                {
+                    description: "Maximum performance",
+                    command: `// Reduce animations
+Game.prefs.fancy = 0;
+Game.prefs.particles = 0;
+Game.prefs.numbers = 0;
+// Optimize FPS
+Game.fps = 15;
+// Disable visual effects
+Game.particleAdd = function() { return false; };
+Game.Notify = function() { return false; };
+// Clear notifications
+Game.NotesById.length = 0;
+// Reduce background processes
+Game.customLogic = [];
+Game.customDraws = [];`,
+                    notes: "Maximizes game performance"
+                }
+            ],
+            save_management_pro: [
+                {
+                    description: "Advanced save backup",
+                    command: `// Create backup
+let backup = Game.WriteSave(1);
+// Store with timestamp
+localStorage.setItem('CCBackup_' + Date.now(), backup);
+// Keep last 5 backups
+let backups = Object.keys(localStorage).filter(k => k.startsWith('CCBackup_')).sort();
+while(backups.length > 5) {
+    localStorage.removeItem(backups.shift());
+}`,
+                    notes: "Creates rotating backup system"
+                }
+            ],
+            auto_clicker_pro: [
+                {
+                    description: "Smart Auto Clicker",
+                    command: `// Variables for tracking
+let clicksPerSecond = 250;
+let goldCookieClicks = 0;
+let wrinklersPopped = 0;
+
+// Main clicking function
+setInterval(() => {
+    // Click the big cookie
+    Game.ClickCookie();
+    
+    // Click golden cookies and reindeer
+    Game.shimmers.forEach(s => {
+        if(s.type === 'golden' && this.shouldClickGolden(s)) s.pop();
+    });
+    
+    // Smart buying
+    this.smartBuy();
+    
+}, 1000/this.clicksPerSecond);
+
+shouldClickGolden: function(shimmer) {
+    return !Game.buffs['Clot'] && !Game.buffs['Elder frenzy'];
+},
+
+smartBuy: function() {
+    let best = {efficiency: 0, item: null};
+    
+    // Check buildings
+    Game.ObjectsById.forEach(b => {
+        let efficiency = b.storedCps / b.price;
+        if(efficiency > best.efficiency && Game.cookies >= b.price * this.buyThreshold) {
+            best = {efficiency: efficiency, item: b};
+        }
+    });
+    
+    // Check upgrades
+    Game.UpgradesById.forEach(u => {
+        if(u.canBuy() && !u.bought && u.pool !== 'toggle') {
+            best = {efficiency: Infinity, item: u};
+        }
+    });
+    
+    if(best.item) best.item.buy();
+},
+
+manageWrinklers: function() {
+    Game.wrinklers.forEach(w => {
+        if(w.phase > 0 && w.sucked > Game.cookiesPs * 60 * this.wrinklerThreshold) {
+            w.hp = 0;
+        }
+    });
+},
+
+stop: function() {
+    clearInterval(this.clickInterval);
+    return "Smart automation stopped!";
+}
+};
+
+// Start smart automation
+smartAutomation.start();`,
+                    notes: "Advanced automation with smart decision making"
+                }
+            ],
+            achievement_ultimate: [
+                {
+                    description: "Ultimate Achievement Hunter",
+                    command: `// Achievement mastery setup
+let achievementMaster = {
+    shadowAchievements: true,
+    autoUnlock: true,
+    
+    start: function() {
+        // Unlock all normal achievements
+        Game.AchievementsById.forEach(a => {
+            if(!a.won && (!a.pool || this.shadowAchievements)) {
+                Game.Win(a.name);
+            }
+        });
+        
+        // Setup auto achievement checker
+        if(this.autoUnlock) {
+            this.interval = setInterval(() => {
+                Game.AchievementsById.forEach(a => {
+                    if(!a.won && (!a.pool || this.shadowAchievements)) {
+                        Game.Win(a.name);
+                    }
+                });
+            }, 1000);
+        }
+    },
+    
+    stop: function() {
+        if(this.interval) clearInterval(this.interval);
+    }
+};
+
+// Start achievement master
+achievementMaster.start();`,
+                    notes: "Complete achievement system with auto-unlock and shadow achievements"
+                }
+            ],
+            heavenly_ultimate: [
+                {
+                    description: "Ultimate Heavenly Setup",
+                    command: `// Perfect heavenly setup
+Game.heavenlyChips = Number.MAX_VALUE;
+Game.heavenlyPower = 100;
+Game.prestige = Number.MAX_VALUE;
+Game.CalculatePrestige();
+
+// Unlock all heavenly upgrades
+Game.UpgradesById.forEach(u => {
+    if(u.pool === 'prestige') {
+        u.earn();
+        u.bought = 1;
+    }
+});
+
+// Max angel multiplier
+Game.angelMultiplier = 100;
+Game.angelLevel = 100;
+
+// Perfect ascension setup
+Game.resets = 999999;
+Game.ascensionMode = 0;
+Game.nextAscensionMode = 0;`,
+                    notes: "Complete heavenly chip and prestige maximization"
+                }
+            ],
+            building_specials_plus: [
+                {
+                    description: "Ultimate Building Special",
+                    command: `// Max all building specials
+Game.ObjectsById.forEach(b => {
+    // Set max level
+    b.level = 9999;
+    b.levelUp();
+    
+    // Set max amount
+    b.amount = 999;
+    b.bought = 999;
+    
+    // Free buildings
+    b.basePrice = 0;
+    b.price = 0;
+    
+    // Max efficiency
+    b.storedCps *= 9999;
+    b.storedTotalCps *= 9999;
+    
+    // Trigger special if available
+    if(b.special) b.special();
+    
+    // Max minigame if available
+    if(b.minigame && b.minigame.launch) {
+        b.minigame.launch();
+        // Max out specific minigame features
+        if(b.minigame.plants) b.minigame.plants.forEach(p => b.minigame.unlockSeed(p));
+        if(b.minigame.gods) b.minigame.gods.forEach(g => g.slot = 0);
+        if(b.minigame.magic) b.minigame.magic = b.minigame.magicM;
+    }
+});`,
+                    notes: "Complete building maximization with all specials and minigames"
+                }
+            ],
+            golden_cookie_ultimate: [
+                {
+                    description: "Ultimate Golden Cookie Setup",
+                    command: `// Perfect golden cookie setup
+Game.shimmerTypes.golden.minTime = 0;
+Game.shimmerTypes.golden.maxTime = 1;
+Game.shimmerTypes.golden.chain = true;
+Game.chimeType = 1;
+Game.goldenCookieForce = 1;
+
+// Max all related upgrades
+Game.Upgrades['Lucky day'].earn();
+Game.Upgrades['Serendipity'].earn();
+Game.Upgrades['Get lucky'].earn();
+
+// Perfect effects
+Game.gainBuff('frenzy', 999999);
+Game.gainBuff('click frenzy', 999999);
+Game.gainBuff('dragon harvest', 999999);
+Game.gainBuff('elder frenzy', 999999);
+Game.gainBuff('building buff', 999999);
+
+// Auto clicker with stats
+let goldenStats = {clicks: 0, chains: 0};
+setInterval(() => {
+    Game.shimmers.forEach(s => {
+        if(s.type == 'golden') {
+            s.pop();
+            goldenStats.clicks++;
+            if(s.chain) goldenStats.chains++;
+        }
+    });
+}, 500);`,
+                    notes: "Perfect golden cookie setup with auto-clicking and statistics"
+                }
+            ],
+            wrinkler_ultimate: [
+                {
+                    description: "Ultimate Wrinkler Control",
+                    command: `// Perfect wrinkler setup
+Game.getWrinklersMax = function() { return 999; };
+Game.wrinklerSpawnFrequency = 0.001;
+Game.wrinklerHP = 0.1;
+
+// Wrinkler spawn control
+let wrinklerControl = {
+    maxWrathWrinklers: true,
+    autoPopThreshold: 100000,
+    
+    start: function() {
+        this.interval = setInterval(() => {
+            // Force spawn wrinklers
+            while(Game.wrinklers.filter(w => w.phase > 0).length < Game.getWrinklersMax()) {
+                Game.SpawnWrinkler(this.maxWrathWrinklers);
+            }
+            
+            // Auto pop when threshold reached
+            Game.wrinklers.forEach(w => {
+                if(w.sucked > Game.cookiesPs * this.autoPopThreshold) {
+                    w.hp = 0;
+                }
+            });
+        }, 1000);
+    },
+    
+    stop: function() {
+        clearInterval(this.interval);
+    }
+};
+
+// Start wrinkler control
+wrinklerControl.start();`,
+                    notes: "Complete wrinkler control with auto-spawn and smart popping"
+                }
+            ],
+            dragon_master: [
+                {
+                    description: "Ultimate Dragon Setup",
+                    command: `// Max dragon level
+Game.dragonLevel = 24;
+
+// Unlock all auras
+for(let i = 0; i <= 24; i++) {
+    Game.dragonAura = i;
+    Game.dragonAura2 = (i + 1) % 24;
+}
+
+// Best aura combination
+Game.dragonAura = 15;  // Radiant Appetite
+Game.dragonAura2 = 18; // Dragon's Fortune
+
+// Dragon training
+Game.Objects['Temple'].minigame.temple = ['Godzamok','Mokalsium','Muridal'];
+Game.UpgradesById.forEach(u => {
+    if(u.pool === 'dragon') u.earn();
+});`,
+                    notes: "Complete dragon maximization with best auras"
+                }
+            ],
+            krumblor_master: [
+                {
+                    description: "Krumblor Master Setup",
+                    command: `// Max Krumblor
+Game.dragonLevels.forEach((level, i) => {
+    Game.dragonLevel = i;
+    if(level.cost()) level.buy();
+});
+
+// Perfect training
+Game.dragonLevel = 24;
+Game.dragonAura = 15;
+Game.dragonAura2 = 18;
+
+// Unlock all dragon upgrades
+Game.UpgradesById.forEach(u => {
+    if(u.pool === 'dragon') {
+        u.unlocked = 1;
+        u.bought = 1;
+    }
+});`,
+                    notes: "Complete Krumblor dragon mastery"
+                }
+            ],
+            santa_master: [
+                {
+                    description: "Ultimate Santa Setup",
+                    command: `// Max Santa level
+Game.santaLevel = 14;
+
+// Unlock all Santa upgrades
+Game.UpgradesById.forEach(u => {
+    if(u.season === 'christmas') {
+        u.unlocked = 1;
+        u.bought = 1;
+    }
+});
+
+// Perfect Christmas setup
+Game.seasonT = Game.fps * 60 * 60 * 24; // 24 hours
+Game.season = 'christmas';
+Game.seasonPopup.reset();
+
+// Spawn reindeer frequently
+Game.shimmerTypes.reindeer.minTime = 0;
+Game.shimmerTypes.reindeer.maxTime = 1;`,
+                    notes: "Complete Santa and Christmas maximization"
+                }
+            ],
+            garden_master: [
+                {
+                    description: "Ultimate Garden Setup",
+                    command: `if(Game.Objects['Farm'].minigame) {
+    // Unlock all seeds
+    Game.Objects['Farm'].minigame.plants.forEach(p => {
+        Game.Objects['Farm'].minigame.unlockSeed(p.id);
+    });
+
+    // Perfect soil
+    Game.Objects['Farm'].minigame.soil = 4;
+    Game.Objects['Farm'].minigame.nextSoil = 4;
+
+    // No plant death
+    Game.Objects['Farm'].minigame.nextStep = function() { return false; };
+    
+    // Auto mature plants
+    Game.Objects['Farm'].minigame.forEachTile(tile => {
+        if(tile.plant) {
+            tile.age = 100;
+            tile.mature = 1;
+        }
+    });
+
+    // Unlock garden upgrades
+    Game.UpgradesById.forEach(u => {
+        if(u.pool === 'garden') {
+            u.unlocked = 1;
+            u.bought = 1;
+        }
+    });
+}`,
+                    notes: "Complete garden mastery with all plants"
+                }
+            ],
+            stock_market_master: [
+                {
+                    description: "Ultimate Stock Market Setup",
+                    command: `if(Game.Objects['Bank'].minigame) {
+    // Max brokers and money
+    Game.Objects['Bank'].minigame.brokers = 999;
+    Game.Objects['Bank'].minigame.profit = Number.MAX_VALUE;
+    
+    // Perfect stock values
+    Game.Objects['Bank'].minigame.goods.forEach(g => {
+        g.val = 100;
+        g.mode = 1;
+        g.dur = 0;
+    });
+
+    // Auto stock management
+    setInterval(() => {
+        Game.Objects['Bank'].minigame.goods.forEach(g => {
+            if(g.val < 10) g.val = 100;
+            if(g.stock < 1000) g.stock = 1000;
+        });
+    }, 1000);
+}`,
+                    notes: "Complete stock market mastery with auto-management"
+                }
+            ]
+        };
+
+        function showToast() {
+            const toast = document.getElementById('copyToast');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2000);
+        }
+
+        function copyToClipboard(command) {
+            navigator.clipboard.writeText(command).then(() => {
+                showToast();
+            });
+        }
+
+        function renderCommands(filter = '') {
+            const commandsList = document.getElementById('commandsList');
+            commandsList.innerHTML = '';
+
+            Object.entries(commandCategories).forEach(([category, commands]) => {
+                const filteredCommands = commands.filter(cmd => 
+                    cmd.description.toLowerCase().includes(filter.toLowerCase()) ||
+                    cmd.command.toLowerCase().includes(filter.toLowerCase()) ||
+                    cmd.notes.toLowerCase().includes(filter.toLowerCase())
+                );
+
+                if (filteredCommands.length > 0) {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.className = 'command-category';
+                    categoryDiv.innerHTML = `
+                        <h2 class="category-title">${category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+                    `;
+
+                    filteredCommands.forEach(cmd => {
+                        const commandDiv = document.createElement('div');
+                        commandDiv.className = 'command-item';
+                        commandDiv.innerHTML = `
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="command-description">${cmd.description}</div>
+                                    <div class="command-code">${cmd.command}</div>
+                                    <small class="text-muted">${cmd.notes}</small>
+                                </div>
+                                <button class="copy-btn" onclick="copyToClipboard('${cmd.command}')">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        `;
+                        categoryDiv.appendChild(commandDiv);
+                    });
+
+                    commandsList.appendChild(categoryDiv);
+                }
+            });
+        }
+
+        // Event listener for search input
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            renderCommands(e.target.value);
+        });
+
+        // Initial render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCommands();
+        });
+    </script>
+</body>
+</html>

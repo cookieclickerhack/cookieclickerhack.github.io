@@ -1,0 +1,1361 @@
+<div id="content" class="page-content ve-init-mw-desktopArticleTarget-targetContainer">
+    <script data-name="featured-video-mapped-to-wiki">
+(function () {
+// we can't use mw.config here because it's too early so we need to pass this data in different way
+const videoDetails = {
+mapping: {"mediaId":"K21eFFRc","connatixPlaylistId":"9bdf4208-a923-44b1-8fb3-4e1289c300c9","impressionsPerSession":4},
+impressionsPerSession: 4,
+};
+const videoBridgeCountries = ["AE","AG","AL","AM","AR","AT","AU","AZ","BA","BB","BD","BG","BH","BN","BO","BR","BS","BY","CA","CH","CL","CN","CO","CR","CU","CY","CZ","DE","DK","DO","DZ","EC","EE","EG","ES","FI","FR","GB","GE","GF","GG","GH","GP","GR","GT","GU","GY","HK","HN","HR","HU","ID","IE","IL","IM","IN","IQ","IR","IS","IT","JE","JM","JO","JP","KE","KG","KH","KR","KW","KY","KZ","LA","LB","LK","LT","LU","LV","LY","MA","MD","ME","MK","MM","MN","MO","MQ","MT","MU","MV","MX","MY","NG","NI","NO","NP","NZ","OM","PA","PE","PH","PK","PL","PR","PS","PT","PY","QA","RE","RO","RS","RU","SA","SC","SE","SG","SI","SK","SV","TD","TH","TN","TR","TT","TW","UA","US","UY","UZ","VE","VI","VN","ZA","ZW"];
+const tier3VideoBridgeCountries = ["GB","BE","NL","DE","AU","MX","AR","FR","MD","CA","ES","IT","PE","CO","CL","NZ"];
+let hasVideoOnPage = null;
+
+function getCookieValue(cookieName) {
+const cookieSplit = ('; ' + document.cookie).split('; ' + cookieName + '=');
+return cookieSplit.length === 2 ? cookieSplit.pop().split(';').shift() : null;
+}
+
+function hasMaxedOutPlayerImpressionsInWiki() {
+const impressionsSoFar = Number(getCookieValue('playerImpressionsInWiki')) || 0;
+const allowedImpressions = Number(videoDetails.impressionsPerSession);
+
+return impressionsSoFar >= allowedImpressions;
+}
+
+function getCountryCode() {
+try {
+return JSON.parse(decodeURIComponent(getCookieValue('Geo'))).country.toLowerCase();
+} catch {
+return null;
+}
+}
+
+function isVideoBridgeAllowedForCountry() {
+const countryCode = getCountryCode();
+
+if (!countryCode) {
+return false;
+}
+
+// If it's a default mapping, then check the country whitelist from the default mapping.
+if (videoDetails?.mapping?.isDefaultMapping) {
+// If the wiki is classified as a tier3 wiki, then check the country whitelist from the tier3VideoBridge whitelist.
+const allowedCountriesForTier3Wikis = tier3VideoBridgeCountries.map(function (allowedTier3CountryCode) {
+return allowedTier3CountryCode.toLowerCase();
+})
+
+return allowedCountriesForTier3Wikis.indexOf(countryCode) !== -1;
+} else {
+// If not a default mapping wiki (so it's a wiki mapping), then check the country whitelist from the videoBridge whitelist
+const allowedCountries = videoBridgeCountries.map(function (allowedCountryCode) {
+return allowedCountryCode.toLowerCase();
+});
+
+return allowedCountries.indexOf(countryCode) !== -1;
+}
+}
+
+window.fandomIsVideoPossible = function () {
+if (hasVideoOnPage === null) {
+hasVideoOnPage =
+videoDetails.mapping &&
+isVideoBridgeAllowedForCountry() &&
+!hasMaxedOutPlayerImpressionsInWiki();
+}
+
+return hasVideoOnPage;
+};
+
+window.canPlayVideo = function () {
+return window.fandomIsVideoPossible()
+};
+
+if (!window.canPlayVideo()) {
+document.body.classList.add('no-featured-video');
+} else {
+document.body.classList.add('has-featured-video');
+}
+})();
+</script>
+<div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
+<meta itemprop="name" content="MICHAEL KEATON WAS In CALL OF DUTY?!">
+<meta itemprop="duration" content="PT00M59S">
+<meta itemprop="description" content="Let us know in the comments if you want more videos on famous Call of Duty actors!">
+<meta itemprop="thumbnailUrl" content="https://cdn.jwplayer.com/v2/media/0UEjtqPg/poster.jpg?width=720">
+<meta itemprop="contentURL" content="https://cdn.jwplayer.com/videos/0UEjtqPg-cSpmBcaY.mp4">
+<meta itemprop="uploadDate" content="2024-10-25T14:39:10+00:00">
+<div id="featured-video__player-container" class="featured-video-player-container"><div class="DesktopArticleVideoPlayer-module_desktopArticleVideoTopPlaceholder__VGmRT"><div class="DesktopArticleVideoPlayer-module_desktopArticleVideoWrapper__O3UBW"><div><div class="strategyRulesWrapper"><script src="https://cdn.jwplayer.com/v2/sites/cGlKNUnj/placements/KmMLkvao/embed.js" async="" id="featured-video__player"></script><div id="jwPlacementDiv_KmMLkvao" data-jw-placement-id="KmMLkvao"><div id="jwExperienceDiv_1qs1phu2sqs8"></div><div class="acw ac-widget-ph ac-reset" data-loaded-pid="fandomcom" data-loaded-wid="001w000001Y8ud2AAB_M10513"><div id="ac-lre-player-ph-ext-Ex2m36652cwsybRI3iicbfGni4iGLkh5" class="ac-lre-player-ph-ext ac-lre-ph-playlist-hide-scroll-bar" tabindex="0" style="--ac-lre-cui-leftBrandingColor: #828282; --ac-lre-cui-progressBarColor: #7881FF; --ac-lre-cui-timestampTooltipColor: #7881FF; --ac-lre-cui-volumeBarColor: #7881FF; --ac-lre-cui-settingsMenuHighlightColor: #7881FF; --ac-lre-cui-leftBrandingSize: 14px; --ac-lre-placeholder-height: 375px; --ac-lre-aspect-ratio-pt: 56.250%;"><div class="h001w000001Y8ud2AAB_M10513 d001w000001Y8ud2AAB_M10513 ac-lre-as-desktop" id="ac-lre-player-ph-Ex2m36652cwsybRI3iicbfGni4iGLkh5"><div class="w001w000001Y8ud2AAB_M10513 luminous-theme"><div class="ac-player-ph"><div class="ac-player-wrapper"><div class="ac-lre-player"><div playsinline="true" class="video-js vjs-default-skin ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5-dimensions vjs-fluid vjs-controls-enabled vjs-workinghover vjs-v7 vjs-layout-medium live-set-max-cc-rows lx-size-2 lx-range-2 vjs-playing vjs-has-started cc-hidden vjs-user-inactive" id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5" tabindex="-1" lang="en" translate="no" role="region" aria-label="Video Player" style="--ac-lre-ccsz-mul: 1.1em; --ac-lre-ccsz-min: 10px; --ac-lre-ccsz-max: 36px; --ac-lre-ccsz-live-rows: 2;"><video id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_html5_api" class="vjs-tech" playsinline="playsinline" tabindex="0" preload="none" muted="muted" crossorigin="anonymous" poster="blob:https://cookieclicker.fandom.com/d5c93c12-8dc2-4ead-929b-425ef86e81aa" src="blob:https://cookieclicker.fandom.com/5bbf019c-8430-49cb-bf5c-b69abae85cb2"></video><div class="lre-vjs-gradient-to-bottom lre-gradient-to-bottom basic-gradient-styling"></div><div class="lre-vjs-gradient-to-top lre-gradient-to-top basic-gradient-styling"></div><div class="lre-vjs-video-title-block lre-title-container"><div class="lre-title-pagination-block"><div class="pagination-element currently-playing">1</div><div class="pagination-element">/</div><div class="pagination-element total-items">8</div></div><div class="lre-title-text"><div class="lre-title-text-content">Honest Trailers Commentary | The Transformers: The Movie</div></div><a class="lre-landing-page-link" href="https://www.youtube.com/watch?v=u6z_51Ljbr4" target="_blank"><div class="read-more">Read More</div><div class="lre-landing-page-icon"></div></a></div><div class="vjs-poster" tabindex="-1" aria-disabled="false" style="background-image: url(&quot;blob:https://cookieclicker.fandom.com/d5c93c12-8dc2-4ead-929b-425ef86e81aa&quot;);"></div><div class="vjs-text-track-display" translate="yes" aria-live="off" aria-atomic="true"><div style="position: absolute; inset: 0px; margin: 1.5%;"></div></div><div class="ac-lre-theater-poster" style=""><img alt="theater-aux-poster" src="https://cdn5-fstl-tf.anyclip.com/NozViYkBd4bFyu3qY3On/1690235719443_852x480_thumbnail.jpg?wid=001w000001Y8ud2AAB_M10513"></div><div class="vjs-loading-spinner" dir="ltr"><span class="vjs-control-text">Video Player is loading.</span></div><button class="vjs-big-play-button" type="button" title="Play Video" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Play Video</span></button><div class="vjs-control-bar" dir="ltr"><div class="vjs-volume-panel vjs-control vjs-volume-panel-horizontal"><button class="vjs-mute-control vjs-control vjs-button vjs-vol-0" type="button" title="Unmute" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Unmute</span></button><div class="vjs-volume-control vjs-control vjs-volume-horizontal"><div tabindex="0" class="vjs-volume-bar vjs-slider-bar vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Volume Level" aria-live="polite" aria-valuetext="0%"><div class="vjs-mouse-display"><div class="vjs-volume-tooltip" aria-hidden="true"></div></div><div class="vjs-volume-level" style="width: 0%;"><span class="vjs-control-text"></span></div></div></div></div><div class="vjs-duration vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Duration&nbsp;</span><span class="vjs-duration-display" aria-live="off" role="presentation">36:00</span></div><div class="vjs-time-control vjs-time-divider" aria-hidden="true"><div><span>/</span></div></div><div class="vjs-current-time vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Current Time&nbsp;</span><span class="vjs-current-time-display" aria-live="off" role="presentation">0:05</span></div><button class="ac-as-button gear-icon vjs-control vjs-button " type="button" aria-disabled="false" title="Advanced Settings"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Advanced Settings</span><div id="vjs-playback-speed-value-label-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_392" class="vjs-playback-speed-value"></div></button><div class="vjs-progress-control vjs-control"><div tabindex="0" class="vjs-progress-holder vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="0.27" aria-valuemin="0" aria-valuemax="100" aria-label="Progress Bar" aria-valuetext="00:05 of 36:00"><div class="vjs-load-progress" style="width: 2.03%;"><span class="vjs-control-text"><span>Loaded</span>: <span class="vjs-control-text-loaded-percentage">2.03%</span></span><div data-start="0" data-end="43.910999" style="left: 0%; width: 100%;"></div></div><div class="vjs-mouse-display"><div class="vjs-time-tooltip" aria-hidden="true"></div></div><div class="vjs-play-progress vjs-slider-bar" aria-hidden="true" style="width: 0.27%;"><div class="vjs-time-tooltip" aria-hidden="true" style="left: 2px;">00:05</div></div></div></div>
+<div class="ac-lre-chaptering-container structure-position structure-shape">
+
+</div><div class="vjs-remaining-time vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Remaining Time&nbsp;</span><span aria-hidden="true">-</span><span class="vjs-remaining-time-display" aria-live="off" role="presentation">35:55</span></div><div class="vjs-custom-control-spacer vjs-spacer ">&nbsp;</div><button class="vjs-fullscreen-control vjs-control vjs-button" type="button" title="Fullscreen" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Fullscreen</span></button><button class="vjs-play-control vjs-control vjs-button vjs-playing" type="button" title="Pause" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Pause</span></button><button class="vjs-icon-custombutton vjs-control vjs-button vjs-rewind-10-control" type="button" aria-disabled="false" title="Rewind 10 Seconds"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Rewind 10 Seconds</span></button><button class="vjs-icon-custombutton vjs-control vjs-button lre-next-up" type="button" aria-disabled="false" title="Up Next"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Up Next</span></button></div><div class="vjs-error-display vjs-modal-dialog vjs-hidden " tabindex="-1" aria-describedby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_314_description" aria-hidden="true" aria-label="Modal Window" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_314_description">This is a modal window.</p><div class="vjs-modal-dialog-content" role="document"></div></div><div class="vjs-modal-dialog vjs-hidden  vjs-text-track-settings" tabindex="-1" aria-describedby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320_description" aria-hidden="true" aria-label="Caption Settings Dialog" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320_description">Beginning of dialog window. Escape will cancel and close the window.</p><div class="vjs-modal-dialog-content" role="document"><div class="vjs-track-settings-colors"><fieldset class="vjs-fg-color vjs-track-setting"><legend id="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320">Text</legend><label id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="vjs-label">Color</label><select aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-White" value="#FFF" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-White">White</option><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Black" value="#000" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Black">Black</option><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Red" value="#F00" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Red">Red</option><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Green" value="#0F0" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Green">Green</option><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Blue" value="#00F" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Blue">Blue</option><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Yellow" value="#FF0" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Yellow">Yellow</option><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Magenta" value="#F0F" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Magenta">Magenta</option><option id="captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Cyan" value="#0FF" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Cyan">Cyan</option></select><span class="vjs-text-opacity vjs-opacity"><label id="captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="vjs-label">Transparency</label><select aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Opaque" value="1" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Opaque">Opaque</option><option id="captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SemiTransparent" value="0.5" aria-labelledby="captions-text-legend-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-foreground-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SemiTransparent">Semi-Transparent</option></select></span></fieldset><fieldset class="vjs-bg-color vjs-track-setting"><legend id="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320">Background</legend><label id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="vjs-label">Color</label><select aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Black" value="#000" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Black">Black</option><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-White" value="#FFF" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-White">White</option><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Red" value="#F00" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Red">Red</option><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Green" value="#0F0" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Green">Green</option><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Blue" value="#00F" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Blue">Blue</option><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Yellow" value="#FF0" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Yellow">Yellow</option><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Magenta" value="#F0F" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Magenta">Magenta</option><option id="captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Cyan" value="#0FF" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Cyan">Cyan</option></select><span class="vjs-bg-opacity vjs-opacity"><label id="captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="vjs-label">Transparency</label><select aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Opaque" value="1" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Opaque">Opaque</option><option id="captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SemiTransparent" value="0.5" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SemiTransparent">Semi-Transparent</option><option id="captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Transparent" value="0" aria-labelledby="captions-background-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-background-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Transparent">Transparent</option></select></span></fieldset><fieldset class="vjs-window-color vjs-track-setting"><legend id="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320">Window</legend><label id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="vjs-label">Color</label><select aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Black" value="#000" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Black">Black</option><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-White" value="#FFF" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-White">White</option><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Red" value="#F00" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Red">Red</option><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Green" value="#0F0" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Green">Green</option><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Blue" value="#00F" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Blue">Blue</option><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Yellow" value="#FF0" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Yellow">Yellow</option><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Magenta" value="#F0F" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Magenta">Magenta</option><option id="captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Cyan" value="#0FF" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-color-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Cyan">Cyan</option></select><span class="vjs-window-opacity vjs-opacity"><label id="captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="vjs-label">Transparency</label><select aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Transparent" value="0" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Transparent">Transparent</option><option id="captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SemiTransparent" value="0.5" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SemiTransparent">Semi-Transparent</option><option id="captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Opaque" value="1" aria-labelledby="captions-window-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-window-opacity-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Opaque">Opaque</option></select></span></fieldset></div><div class="vjs-track-settings-font"><fieldset class="vjs-font-percent vjs-track-setting"><legend id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="">Font Size</legend><select aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-50" value="0.50" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-50">50%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-75" value="0.75" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-75">75%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-100" value="1.00" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-100">100%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-125" value="1.25" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-125">125%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-150" value="1.50" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-150">150%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-175" value="1.75" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-175">175%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-200" value="2.00" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-200">200%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-300" value="3.00" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-300">300%</option><option id="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-400" value="4.00" aria-labelledby="captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-size-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-400">400%</option></select></fieldset><fieldset class="vjs-edge-style vjs-track-setting"><legend id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="">Text Edge Style</legend><select aria-labelledby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-None" value="none" aria-labelledby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-None">None</option><option id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Raised" value="raised" aria-labelledby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Raised">Raised</option><option id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Depressed" value="depressed" aria-labelledby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Depressed">Depressed</option><option id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Uniform" value="uniform" aria-labelledby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Uniform">Uniform</option><option id="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Dropshadow" value="dropshadow" aria-labelledby="ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Dropshadow">Dropshadow</option></select></fieldset><fieldset class="vjs-font-family vjs-track-setting"><legend id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320" class="">Font Family</legend><select aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320"><option id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-ProportionalSansSerif" value="proportionalSansSerif" aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-ProportionalSansSerif">Proportional Sans-Serif</option><option id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-MonospaceSansSerif" value="monospaceSansSerif" aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-MonospaceSansSerif">Monospace Sans-Serif</option><option id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-ProportionalSerif" value="proportionalSerif" aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-ProportionalSerif">Proportional Serif</option><option id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-MonospaceSerif" value="monospaceSerif" aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-MonospaceSerif">Monospace Serif</option><option id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Casual" value="casual" aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Casual">Casual</option><option id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Script" value="script" aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-Script">Script</option><option id="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SmallCaps" value="small-caps" aria-labelledby="captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320 captions-font-family-ac-lre-vjs-Ex2m36652cwsybRI3iicbfGni4iGLkh5_component_320-SmallCaps">Small Caps</option></select></fieldset></div><div class="vjs-track-settings-controls"><button type="button" class="vjs-default-button" title="restore all settings to the default values">Reset<span class="vjs-control-text"> restore all settings to the default values</span></button><button type="button" class="vjs-done-button">Done</button></div></div><button class="vjs-close-button vjs-control vjs-button" type="button" title="Close Modal Dialog" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Close Modal Dialog</span></button><p class="vjs-control-text">End of dialog window.</p></div><div class="ac-lre-theater-top"><div class="vjs-theater-exit-control" style="display: none;"><span class="vjs-theater-exit-icon"></span><span class="vjs-theater-exit-text"></span></div><div class="vjs-theater-share-control" style="display: none;"><span class="vjs-theater-share-icon"></span><span class="vjs-theater-share-title">Share</span></div></div><div class="ac-as-menu-pane vjs-hidden"><div class="ac-as-menu-wrapper main-menu-level"><div class="ac-as-menu-header top-level" tabindex="0" role="button" aria-disabled="false">Settings<span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite"></span><div class="ac-as-close-button" tabindex="0" role="button" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite"></span></div></div><div class="ac-as-menu-item ac-as-branch" tabindex="0" role="button" aria-disabled="false">Playback Speed<span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite"></span><div class="ac-as-selected-label">Normal</div></div><div class="ac-as-menu-item ac-as-branch ac-as-video-quality" tabindex="0" role="button" aria-disabled="false">Video Quality<span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite"></span><div class="ac-as-selected-label">Auto (480p)</div></div><div class="ac-as-menu-item ac-as-branch" tabindex="0" role="button" aria-disabled="false">Closed Captions<span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite"></span><div class="ac-as-selected-label">Off</div></div></div></div><a class="ac-logobrand-image-destination" href="https://www.fandom.com?source=logo&amp;wid=001w000001Y8ud2AAB_M10513" target="_blank"><img class="ac-logobrand-image" src="https://assets.anyclip.com/pub-assets/fandomcom/fandom.png" width="42px" height="22px" alt="Brand logo"></a><button class="vjs-icon-replay-btn vjs-button lre-replay-list" type="button" aria-disabled="false" title="Replay the list"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Replay the list</span></button>
+<div class="ac-lre-overlay-label">
+<div class="overlay-label-content-text">TOP ARTICLES</div>
+</div>
+
+<div class="trending-articles-container">
+
+<div class="nav-item-hit-area" data-index="0">
+<div class="navigation-item item-0 currently-playing" data-index="0"></div>
+</div>
+
+<div class="nav-item-hit-area" data-index="1">
+<div class="navigation-item item-1" data-index="1"></div>
+</div>
+
+<div class="nav-item-hit-area" data-index="2">
+<div class="navigation-item item-2" data-index="2"></div>
+</div>
+
+<div class="nav-item-hit-area" data-index="3">
+<div class="navigation-item item-3" data-index="3"></div>
+</div>
+
+<div class="nav-item-hit-area" data-index="4">
+<div class="navigation-item item-4" data-index="4"></div>
+</div>
+
+<div class="nav-item-hit-area" data-index="5">
+<div class="navigation-item item-5" data-index="5"></div>
+</div>
+
+<div class="nav-item-hit-area" data-index="6">
+<div class="navigation-item item-6" data-index="6"></div>
+</div>
+
+<div class="nav-item-hit-area" data-index="7">
+<div class="navigation-item item-7" data-index="7"></div>
+</div>
+
+</div>
+</div><div class="ac-lre-ima-ad-wrapper" style="position: absolute; top: 0px; left: 0px; z-index: 0; pointer-events: none; height: 375.797px; width: 668.094px;"><div class="ac-lre-ima-ad-container" style="position: absolute; top: 0px; left: 0px; z-index: 0; display: block; pointer-events: none; width: 668.094px; height: 375.797px;"><div style="position: absolute; width: 668.094px; height: 375.797px;"><div style="position: absolute;"><div style="display: none;"><video title="Advertisement" webkit-playsinline="true" playsinline="true" style="background-color: rgb(0, 0, 0); position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></video><div style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></div></div><div style="display: none;"><video title="Advertisement" webkit-playsinline="true" playsinline="true" style="background-color: rgb(0, 0, 0); position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></video><div style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px;"></div></div><iframe src="https://imasdk.googleapis.com/js/core/bridge3.679.0_en.html#goog_1863959859" allowfullscreen="" allow="autoplay;attribution-reporting" id="goog_1863959859" title="Advertisement" style="border: 0px; opacity: 0; margin: 0px; padding: 0px; position: relative; color-scheme: light;"></iframe><iframe title="Advertisement" style="display: none;"></iframe></div><video webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%; background-color: rgb(0, 0, 0); display: none;"></video><div style="position: absolute;"><video webkit-playsinline="true" playsinline="true" style="width: 100%; height: 100%; background-color: rgb(0, 0, 0); display: none;"></video><div style="position: absolute; inset: 0px;"></div></div></div><iframe sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" srcdoc="<script>
+function sendMessage(msg) {
+var post = 'adm:1736073851760://' + JSON.stringify(msg);
+window.parent.postMessage(post, '*'); 
+}
+</script>
+<script type=&quot;text/javascript&quot; onload=&quot;sendMessage('load')&quot; 
+onerror=&quot;sendMessage('error')&quot; src=&quot;https://player.anyclip.com/lreprx/js/v1/src/lreprx.js?sid=Ex2m36652cwsybRI3iicbfGni4iGLkh5&amp;imaw=0&amp;wf=1&quot;></script>
+" style="display: none; width: 0px; height: 0px;"></iframe></div></div><div class="ac-lre-ad-bar" style="display: none;"><div class="lre-ad-bar-left"></div><div class="lre-ad-bar-center"></div><div class="lre-ad-bar-right"></div></div><div class="ac-lre-spinner-holder"><div class="lds-dual-ring"><span class="the-lds-rings"></span></div></div><div class="vjs-theater-background" style="display: none;"></div><div class="ac-lre-test-resolution-indicator" style="display: none;"></div><ac-nav id="ac-context-menu-Ex2m36652cwsybRI3iicbfGni4iGLkh5" class="ac-context-menu"><ul class="context-menu-items"><li class="context-menu-item"><a href="https://anyclip.com/?source=powered&amp;wid=001w000001Y8ud2AAB_M10513" class="ac-context-menu-link" target="_blank">Powered by AnyClip </a></li><li class="context-menu-item"><a href="https://anyclip.com/privacy-policy/?source=policy&amp;wid=001w000001Y8ud2AAB_M10513" class="ac-context-menu-link" target="_blank">Privacy Policy</a></li><li class="context-menu-item"><a href="https://docs.anyclip.com/en/articles/9182962-keyboard-accessibility" class="ac-context-menu-link" target="_blank">Keyboard Shortcuts</a></li></ul></ac-nav></div><div class="anti-click-area" style="display: none;"></div><div class="lre-cancel-float font-fix"></div></div></div><div class="ac-lre-playlist-horizontal">
+<div id="ac-lre-ph-playlist-horizontal" class="ac-lre-playlist-text"></div>
+<div id="ac-lre-btn-playlist-horizontal-prev" class="ac-lre-btn-nav" data-navigate="prev"><div></div></div>
+<div id="ac-lre-btn-playlist-horizontal-next" class="ac-lre-btn-nav" data-navigate="next"><div></div></div>
+</div><div class="outer-title-container"><div class="outer-title-container-text">Honest Trailers Commentary | The Transformers: The Movie</div></div></div></div><div class="ac-lre-playlist-vertical">
+<div id="ac-lre-ph-playlist-vertical" class="ac-lre-playlist-text"></div>
+<div id="ac-lre-btn-playlist-vertical-prev" class="ac-lre-btn-nav" data-navigate="prev"><div></div></div>
+<div id="ac-lre-btn-playlist-vertical-next" class="ac-lre-btn-nav" data-navigate="next"><div></div></div>
+</div></div></div><script src="https://player.anyclip.com/anyclip-widget/lre-widget/prod/v1/src/lre.js" pubname="fandomcom" data-variant="$8-IlFDedwA" widgetname="001w000001Y8ud2AAB_M10513" data-loaded="true"></script></div></div><input type="hidden" name="isDismissed" value="false"></div></div></div></div>
+</div>
+                        <div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6XD44P" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="mw-parser-output"><span style="image-rendering:pixelated;"><div class="floatright"><img alt="Cheated cookies" src="https://static.wikia.nocookie.net/cookieclicker/images/8/80/Cheated_cookies.png/revision/latest?cb=20180419130911" decoding="async" loading="lazy" width="96" height="96" data-image-name="Cheated cookies.png" data-image-key="Cheated_cookies.png" data-relevant="0"></div></span>
+<dl><dd><span class="dablink"><i>For cheats on Cookie Clicker Classic, see <a href="/wiki/Cheating_(Cookie_Clicker_Classic)" class="mw-redirect" title="Cheating (Cookie Clicker Classic)">Cheating (Cookie Clicker Classic)</a>.</i></span></dd></dl>
+<p>For the sake of organization, all scripts will follow this format: <a href="/wiki/Cookie_Clicker_Wiki" title="Cookie Clicker Wiki">Cookie Clicker Wiki</a>
+</p>
+<ul><li>For scripts with "<kbd>[Expand]</kbd>", click it to see the full script.</li></ul>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" aria-label="show"><div class="toctitle" lang="en" dir="ltr" style="min-width: 400px;"><h2 id="mw-toc-heading"><svg class="wds-icon wds-icon-tiny">
+<use href="#wds-icons-bullet-list-tiny"></use>
+</svg>Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox" aria-label="show"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#<input>_-_replace_the_entire_underlined_part_(including_<_and_>)_with_the_desired_input."><span class="tocnumber">1</span> <span class="toctext">&lt;input&gt; - replace the entire underlined part (including &lt; and &gt;) with the desired input.</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Opening_the_Browser_Console"><span class="tocnumber">2</span> <span class="toctext">Opening the Browser Console</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Using_a_Cheat_Interface"><span class="tocnumber">3</span> <span class="toctext">Using a Cheat Interface</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Save_Editing"><span class="tocnumber">4</span> <span class="toctext">Save Editing</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Save_Format"><span class="tocnumber">4.1</span> <span class="toctext">Save Format</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#&quot;Cheated_cookies_taste_awful&quot;_Achievement"><span class="tocnumber">5</span> <span class="toctext">"Cheated cookies taste awful" Achievement</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Debug_Cheats"><span class="tocnumber">6</span> <span class="toctext">Debug Cheats</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Defining_shortcuts"><span class="tocnumber">7</span> <span class="toctext">Defining shortcuts</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Cookies_Related"><span class="tocnumber">8</span> <span class="toctext">Cookies Related</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Buildings_Related"><span class="tocnumber">9</span> <span class="toctext">Buildings Related</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Golden/Wrath_Cookies_Related"><span class="tocnumber">10</span> <span class="toctext">Golden/Wrath Cookies Related</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#Grandmapocalypse_Related"><span class="tocnumber">11</span> <span class="toctext">Grandmapocalypse Related</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Achievements_Related"><span class="tocnumber">12</span> <span class="toctext">Achievements Related</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Milk_Progress"><span class="tocnumber">13</span> <span class="toctext">Milk Progress</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Upgrades_Related"><span class="tocnumber">14</span> <span class="toctext">Upgrades Related</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#Heavenly_Chips_Related"><span class="tocnumber">15</span> <span class="toctext">Heavenly Chips Related</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#Dungeons_Related"><span class="tocnumber">16</span> <span class="toctext">Dungeons Related</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#Sugar_Lump_Related"><span class="tocnumber">17</span> <span class="toctext">Sugar Lump Related</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#Utilities"><span class="tocnumber">18</span> <span class="toctext">Utilities</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="#Cosmetic_Tweaks"><span class="tocnumber">18.1</span> <span class="toctext">Cosmetic Tweaks</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#Calculating_Cookies_at_a_Future_Time"><span class="tocnumber">18.2</span> <span class="toctext">Calculating Cookies at a Future Time</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="#Golden_Cookies_Notifications"><span class="tocnumber">18.3</span> <span class="toctext">Golden Cookies Notifications</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="#Auto-Buying_Scripts"><span class="tocnumber">18.4</span> <span class="toctext">Auto-Buying Scripts</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-24"><a href="#Reindeer_Related"><span class="tocnumber">19</span> <span class="toctext">Reindeer Related</span></a></li>
+<li class="toclevel-1 tocsection-25"><a href="#Some_Codes_that_may_not_be_listed_on_here"><span class="tocnumber">20</span> <span class="toctext">Some Codes that may not be listed on here</span></a></li>
+</ul>
+</div>
+
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div id="incontent_leaderboard" class="gpt-ad ad-slot ad-slot-icl hidead" style=""></div><div class="advertisement-label" data-slot-name="incontent_leaderboard">Advertisement</div></div><h2><span id=".3Cinput.3E_-_replace_the_entire_underlined_part_.28including_.3C_and_.3E.29_with_the_desired_input."></span><span class="mw-headline" id="<input>_-_replace_the_entire_underlined_part_(including_<_and_>)_with_the_desired_input."><span style="color:red;"><u>&lt;input&gt;</u> - replace the entire underlined part (including &lt; and &gt;) with the desired input</span>.</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D1&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li>If <u>&lt;input&gt;</u> is in quotes, leave them be.</li>
+<li>If <u>&lt;input&gt;</u> isn't in quotes, but a script is still not working, put input in quotes.</li>
+<li>Cheats are case-sensitive, so don't replace uppercase letters with lowercase.</li></ul>
+<p>Example:
+</p>
+<pre>*game.unlock(&lt;neuromancy&gt;) = wrong
+*Game.Unlock("Neuromancy") = right
+</pre>
+<p><b>Additional helpful information:</b>
+</p>
+<ul><li>1 millisecond is 1/1000th of a second, or 0.001 seconds.</li>
+<li>FPS stands for frames per second, which is the number of calculations done in a second. The default is 30 fps, but you can change it using a console command (see the <a href="#Utilities">utilities</a> section).</li></ul>
+<h2><span class="mw-headline" id="Opening_the_Browser_Console">Opening the Browser Console</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D2&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>These are the instructions to bring up the console in different browsers. The console is where you enter the code into for the cheats to take effect.
+</p>
+<dl><dt><b>Chrome:</b>  CTRL + SHIFT + I to open the developer tools, then select 'console' in the top bar. You can also right click and select 'inspect element's or open the three dots menu on the top-right, select 'more tools' then 'developer tools'.</dt></dl>
+<p><b>Microsoft Windows:</b> Either press CTRL + SHIFT + K or <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>J</kbd> or <kbd>F12</kbd> to open the developer tools. Then, select 'console' at the top.
+</p><p><br>
+<b>Mac OS:</b> Press <kbd>⌘</kbd> + <kbd>ALT</kbd> + <kbd>J</kbd>&nbsp;
+then click on the 'console' tab if not already done.
+You can also right-click and select "Inspect element" Then go to the Console bar. Alternately, press ⌘ + ALT + K or ⌘ + ALT + C
+</p>
+<dl><dt></dt></dl>
+<p><br>
+Press <kbd>⌘</kbd> + <kbd>OPTION</kbd> + <kbd>K</kbd> to open the console.
+Click on the "scratchpad" icon on the right. After entering the desired code, press <kbd>CTRL</kbd> + <kbd>R</kbd> to execute it.
+</p>
+<dl><dt></dt></dl>
+<dl><dt></dt>
+<dt><b>Opera GX:</b> <b>Press Ctrl + Shift + C to open the developer tools</b>  AND <b>NEVER</b> PRESS F12 (Another way to do this is by pressing right click and going down the menu to inspect element)</dt></dl>
+<dl><dt><dl><dd></dd></dl></dt></dl>
+<dl><dt><dl><dd></dd></dl></dt></dl>
+<p>Type "javascript:[your code here]" on the address bar, then press Enter.
+</p>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Using_a_Cheat_Interface">Using a Cheat Interface</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D3&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>There are three ways to enable an interface. Choose the one that works the best.
+</p>
+<dl><dt>Bookmark</dt>
+<dd></dd></dl>
+<ul><li>Create a new bookmark.</li>
+<li>In the "URL" box, copy/paste the following code. (The link to the source code can be found on the wiki page of the corresponding interface.)</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">javascript:(function(){var script=document.createElement('script');script.setAttribute('src','<u>&lt;source link&gt;</u>');document.body.appendChild(script);}());</p></div>
+<ul><li>Name it whatever you like.</li>
+<li>Now, whenever you are in the game, simply click on this bookmark to enable the cheat interface.</li></ul>
+<dl><dt>Developer Console</dt>
+<dd></dd></dl>
+<ul><li>Open your browser console. For instructions, look <a href="/wiki/Cheating#Opening_the_Browser_Console" title="Cheating">above</a>.</li>
+<li>Copy all the source code from the link provided in the cheat interface's wiki page.</li>
+<li>Paste all the code in your browser console.</li>
+<li>Press Enter.</li>
+<li>There should not be any error if successfully installed.</li></ul>
+<dl><dt>TamperMonkey/GreaseMonkey</dt>
+<dd></dd></dl>
+<ul><li>Open your Monkey.</li>
+<li>Add a new UserScript.</li>
+<li>Copy/paste the following code into your Monkey editor. (The link to the source code can be found on the wiki page of the corresponding interface.)</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">// ==UserScript==
+// @name CheatInterface
+// @namespace Cookie
+// @include orteil.dashnet.org/cookieclicker/
+// @version 1
+// @grant none
+// ==/UserScript==
+var oldOnload = window.onload;
+window.onload = function () {
+oldOnload();
+var script = document.createElement('script');
+script.setAttribute('src', '<u>&lt;source link&gt;</u>');
+document.body.appendChild(script);
+}</p></div>
+<ul><li>Save.</li>
+<li>Go to your newly created UserScript.</li>
+<li>Open the parameters tab.</li>
+<li>Add a new user include.</li>
+<li>Copy/paste the game URL. (<a target="_blank" rel="nofollow noreferrer noopener" class="external free" href="http://orteil.dashnet.org/cookieclicker/">http://orteil.dashnet.org/cookieclicker/</a>)</li>
+<li>Reboot your browser.</li>
+<li>Now, whenever you open Cookie Clicker, the cheat interface will automatically be enabled.</li></ul>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Save_Editing">Save Editing</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D4&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The most simple cheat you can do is import a save. You can make your own save codes by editing an exported save file or by using a <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://coderpatsy.bitbucket.io/cookies/editor.html">save editor</a>. If you wish to it manually, here are the instructions:
+</p>
+<ul><li>Export and copy your save.</li>
+<li>At the end of the code, delete the "<kbd>%21END%21</kbd>" and replace every "<kbd>%3D</kbd>" with a equal sign (<kbd>=</kbd>).</li>
+<li>Go to <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://www.convertforfree.com/base-64-converter/">base64 converter</a> and paste the modified save there.</li>
+<li>Decode it with UTF-8.</li>
+<li>Edit the save. (For information about formatting, refer below.)</li>
+<li>Go to <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://www.convertforfree.com/base-64-converter/">base64 converter</a> and paste your new save.</li>
+<li>Encode it with UTF-8.</li>
+<li>At the end of the resulting code, replace every equal sign (<kbd>=</kbd>) with "<kbd>%3D</kbd>" and append "<kbd>%21END%21</kbd>".</li>
+<li>Import your save to the game.</li></ul>
+<p>Alternatively, you may use a <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://coderpatsy.bitbucket.io/cookies/editor.html">save editor</a>.
+</p>
+<h3><span class="mw-headline" id="Save_Format">Save Format</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D5&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h3>
+<p><i>For more information, see <a href="/wiki/Save#Save_format" title="Save">here</a>.</i>
+</p><p>The decoded save follows a certain format, take this save for example:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;width:100000000000000002345676543215673;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">nan</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">1.0393||1381898487292;1380107853914;1381899592923|011101|19810703888477384;232154241051907840;4218;2120;24564619087288988;9632;-1;-1;45326046739823870;0;11;107852;0;-1;2;207;1656259545394620;175|219,220,25128184169839,0;216,216,64729416294516,0;180,180,7033459448,0;168,169,22279979110,0;159,159,75346744514,0;150,150,182832240409,0;139,140,651206881531,0;143,143,11123847712297,0;121,122,120436061607417,0;112,112,1119454662710064,0;|4503599627370495;4503599627370495;4503599627370495;4503573749070335;2814337448673279;171798691455|4503599627370495;2313303743266815;2047</p></div>
+<p>The vertical bars divide the save into sections. Following are the formats of each individual section.
+</p>
+<ul><li>Version number</li>
+<li>Reserved for future use</li>
+<li>Unix timestamps</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">1381898487292;1380107853914;1381899592923
+// 1381898487292 - session started
+// 1380107853914 - legacy started
+// 1381899592923 - time this save was created
+// To convert it into a readable format, divide it by 1000
+// Put the result in <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://www.onlineconversion.com/unix_time.htm">this converter</a> and click "Submit"
+// 1381898487.292 = Wed, 16 Oct 2013 04:41:27 GMT
+// 1380107853.914 = Wed, 25 Sep 2013 11:17:33 GMT
+// 1381899592.923 = Wed, 16 Oct 2013 04:59:52 GMT</p></div> 
+<ul><li>Preferences (0 means OFF, 1 means ON)</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">011101
+// 0 - particles
+// 1 - numbers
+// 1 - automatically save
+// 1 - offline mode (0 means offline, 1 means online)
+// 0 - milk
+// 1 - fancy graphics</p></div>
+<ul><li>Cookie stats</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">19810703888477384;232154241051907840;4218;2120;24564619087288988;9632;-1;-1;45326046739823870;0;11;107852;0;-1;2;207;1656259545394620;175
+// 19810703888477384 - Cookies in bank
+// 232154241051907840 - Cookies baked (this session)
+// 4218 - Big cookie clicks
+// 2120 - Golden cookie clicks (all time)
+// 24564619087288988 - Hand-made cookies
+// 9632 - Missed golden cookies (<a href="/wiki/Golden_Cookie" title="Golden Cookie">removed feature</a>)
+// -1 - Background color (never implemented)
+// -1 - Milk type (never implemented)
+// 45326046739823870 - Cookies forfeited by resetting
+// 0 - Grandmatriarchs status (0=Appeased, 1=Awoken, 2=Displeased, 3=Angered)
+// 11 - Elder Pledges bought
+// 107852 - Elder Pledge time left (minutes * 1800)
+// 0 - Next upgrade to research
+// -1 - Research time left (minutes * 1800)
+// 2 - Number of resets
+// 207 - Golden cookie clicks (this session)
+// 1656259545394620 - Cookies withered (sucked by wrinkler)
+// 175 - Wrinklers popped</p></div>
+<ul><li>Buildings</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">219,220,25128184169839,0;216,216,64729416294516,0;180,180,7033459448,0;168,169,22279979110,0;159,159,75346744514,0;150,150,182832240409,0;139,140,651206881531,0;143,143,11123847712297,0;121,122,120436061607417,0;112,112,1119454662710064,0;
+// Each building has its own section, separated by semicolons
+// The pattern repeats, so I will only use Cursor as an example
+// In this case, the section for Cursor is 219,220,25128184169839,0
+// 219 - amount owned
+// 220 - amount bought (include ones that were sold)
+// 25128184169839 - total cookies produced
+// 0 - specialUnlocked (not yet implemented, dungeon related)</p></div>
+<ul><li>Upgrades</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">// 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11
+// 11 11 11 11 00 11 11 00 00 10 00 11 00 11 11 11 00 11 11 11 11 11 11 11 11
+// 11 11 11 11 11 11 11 11 11 00 11 11 11 11 11 11 11 11 00 11 11 11 11 11 00
+// 11 11 11 00 11 11 11 11 11 11 11 11 11 11 11 11 11 00
+// Each 2 digits represents an upgrade (order shown at <a href="/wiki/Cheating#References" title="Cheating">bottom of this page</a>)
+// The first digit is whether the upgrade is unlocked (requirements met)
+// The second digit is whether the upgrade is bought</p></div>
+<ul><li>Achievements</li></ul>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;width:98495775943053352395848544545873495738658349548345046830549043530950355563255555555555553333333334999999999999999999999999999999999999999999999999999999999999999999999999999999;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">4503599627370495;2313303743266815;2047
+// Do the same procedure as the Upgrades above, except for separation
+// 11111111111111111111111111111111111111111111111111
+// 11111111111111111111011111111111111011111101100000
+// 111111111
+// Each digit represents an achievement (order shown at <a href="/wiki/Cheating#References" title="Cheating">bottom of this page</a>)</p></div>
+<p>Upon&nbsp;finishing the save editing, the following tools may be helpful in returning the save to its original format:
+</p>
+<ul><li><a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://www.convertforfree.com/unix-timestamp-converter/">Unix timestamp converter</a></li>
+<li><a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://www.convertforfree.com/text-reverser/">Reverse text</a></li>
+<li><a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://www.convertforfree.com/number-base-converter/">Binary to decimal converter</a></li></ul>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span id=".22Cheated_cookies_taste_awful.22_Achievement"></span><span class="mw-headline" id="&quot;Cheated_cookies_taste_awful&quot;_Achievement">"Cheated cookies taste awful" Achievement</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D6&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>There are only two in-game events that award the achievement "<a href="/wiki/Achievement#Shadow_Achievements" title="Achievement">Cheated cookies taste awful</a>".
+</p>
+<ul><li>Setting Cookies in bank to be greater than Cookies baked all time. (The amount may need to be adjusted depending on the CpS.)</li></ul>
+<pre>Game.cookies = Game.cookiesEarned + (<u>amount)</u>;
+</pre>
+<ul><li>Using the <a href="/wiki/Open_Sesame" title="Open Sesame">Open Sesame</a> command.</li></ul>
+<p>You can also remove the achievement by typing this line in the console:
+</p>
+<pre>Game.Achievements["Cheated cookies taste awful"].won=0
+</pre>
+<h2><span class="mw-headline" id="Debug_Cheats">Debug Cheats</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D7&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Main Article: <a href="/wiki/Open_Sesame" title="Open Sesame">Open Sesame</a>
+</p><p><br>
+These are cheats built into the game itself to aid in debugging and testing the game.
+</p>
+<dl><dt>Debug Upgrades</dt>
+<dd><figure class="thumb tright show-info-icon" style="width: 180px"> 	<a href="https://static.wikia.nocookie.net/cookieclicker/images/d/da/Screen_Shot_2022-08-15_at_11.01.01_am.png/revision/latest?cb=20220815031051" class="image" style="display: inline-block; position: relative;"><img alt="The menu has many buttons that can be used to spawn golden cookies, set the amount of cookies and change the amount of sugar lumps." src="https://static.wikia.nocookie.net/cookieclicker/images/d/da/Screen_Shot_2022-08-15_at_11.01.01_am.png/revision/latest/scale-to-width-down/180?cb=20220815031051" decoding="async" loading="lazy" width="180" height="543" class="thumbimage" data-image-name="Screen Shot 2022-08-15 at 11.01.01 am.png" data-image-key="Screen_Shot_2022-08-15_at_11.01.01_am.png" data-relevant="1"><div style="position: absolute; bottom: 0px; right: 0px; width: 100%; height: 100%;"><div class="gallery-icon-container view-image"><div class="icon-container view-image" aria-label="view image"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 18 18" width="1em" height="1em"><defs><path id="IconImagesSmall__a" d="M11 15h-.586L3 7.586V7h8v8zm-8 0v-4.586L7.586 15H3zm9-10a1 1 0 011 1v10a1 1 0 01-1 1H2a1 1 0 01-1-1V6a1 1 0 011-1h10zm4-4a1 1 0 011 1v10a1 1 0 11-2 0V3H6a1 1 0 110-2h10z"></path></defs><use xlink:href="#IconImagesSmall__a" fill-rule="evenodd"></use></svg></div></div></div></a> 	 	<figcaption class="thumbcaption"> 		 			 		 		 		 			<p class="caption"><i>The debug menu for cookie clicker as of beta v2.049.</i></p> 		 	</figcaption> </figure></dd></dl>
+<p>As of V2, debug upgrades no longer appear in the store. However, they can still be toggled in the stats screen in debug mode and putting "saysopensesame" in the bakery's name.
+</p><p>Debug upgrades come in the form of upgrades that can only be enabled by using cheats. To enable them, refer to upgrades section <a href="/wiki/Cheating#Unlocking.2FBuying_an_Upgrade" title="Cheating">below</a>. There are currently 10 debug upgrades available:
+</p>
+<ul><li><b>Ultrascience =</b> All new researches take only 5 seconds to complete.</li>
+<li><b>Gold hoard =</b> All Golden Cookies appear every 0.6 seconds after the current or next golden cookie.</li>
+<li><b>Neuromancy =</b> Unlocks every available upgrade (including the debug upgrades) and allows you to toggle them on or off by clicking on their icons in the Stats menu. If Neuromancy itself is clicked, it goes back to the store.</li>
+<li><b>Perfect idling =</b> Keeps producing cookies that you would have gained through CpS after you closed the game and tells you the amount of cookies it produced while it was closed. <b>Remains active even after closing the browser.</b></li>
+<li><b>Wrinkler doormat =</b> <a href="/wiki/Wrinkler" title="Wrinkler">Wrinklers</a> spawn 1000 times more frequently.</li>
+<li><b>Reindeer season =</b> <a href="/wiki/Reindeer" title="Reindeer">Reindeer</a> spawn much faster (about two minutes per reindeer, regularly).</li>
+<li><b>Eternal seasons =</b> Unlocks Season Switcher without purchasing the heavenly upgrade. Seasons do not have a countdown timer.</li>
+<li><b>Magic shenanigans = </b>Cookie production multiplied by 1000.</li>
+<li><b>Occult obstruction = </b>Cookie production reduced to 0.</li>
+<li><b>Glucose-charged air = </b>Sugar lumps coalesce a whole lot faster.</li>
+<li><b>Turbo-charged soil =</b> Garden plants grow every second. Garden seeds are free to plant. You can switch soils at any time.</li></ul>
+<dl><dt>Ruin The Fun</dt>
+<dd></dd></dl>
+<figure class="thumb tright show-info-icon" style="width: 280px"> 	<a href="https://static.wikia.nocookie.net/cookieclicker/images/b/be/RuinTheFun.png/revision/latest?cb=20160618024209" class="image"><img alt="RuinTheFun" src="https://static.wikia.nocookie.net/cookieclicker/images/b/be/RuinTheFun.png/revision/latest?cb=20160618024209" decoding="async" loading="lazy" width="280" height="66" class="thumbimage" data-image-name="RuinTheFun.png" data-image-key="RuinTheFun.png" data-relevant="0"></a> 	 	<figcaption class="thumbcaption"> 		 			 		 		 		 			<p class="caption">The message shown after entering <i>Game.RuinTheFun();</i></p> 		 	</figcaption> </figure>
+<p>Ruin The Fun is a function that instantly gives you all the upgrades (including the debug upgrades and starting <a href="/wiki/Grandmapocalypse" title="Grandmapocalypse">Grandmapocalypse</a>), all the achievements, and <span title="999,999,999,999,999,999,999,999,999,999" style="border-bottom:1px dotted;">1 nonillion</span> cookies. To execute this function, simply use:
+</p>
+<pre>Game.RuinTheFun();
+</pre>
+<dl><dt>Sesame Menu</dt>
+<dd></dd></dl>
+<p>As of V2, the game contains a debugging menu with a multitude of useful features, such as spawning <a href="/wiki/Golden_Cookie" title="Golden Cookie">Golden Cookies</a> with various effects. To unlock it, you can put <u><code>saysopensesame</code></u> at the end of your bakery name. Alternatively, you can use the following code:
+</p>
+<pre>Game.OpenSesame();
+</pre>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Defining_shortcuts">Defining shortcuts</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D8&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>If you find yourself constantly typing or copy-pasting cheats or commands, you may want to consider defining a function. So instead of typing 3 lines of code, you could also type a single word to use the exact same cheat. A function is defined as follows:
+</p>
+<pre>function &lt;name&gt;() {
+(code here)
+}
+</pre>
+<p>Now you only need to type the function name, followed by parentheses '()' to access a command or multiple commands more quickly.
+</p><p>You can also pass an argument to a function like so:
+</p>
+<pre>function &lt;name&gt;(&lt;variable&gt;) {
+alert(&lt;variable&gt;)
+}
+</pre>
+<p>This example code will trigger a click frenzy for 60 seconds when typing gimmeClickFrenzy(60):
+</p>
+<pre>function gimmeClickFrenzy(time) {
+Game.clickFrenzy = Game.fps * time;
+Game.recalculateGains = 1;
+Game.Popup('Click frenzy! Clicking power x777 for ' + time + ' seconds!');
+}
+</pre>
+<p>You can also pass multiple arguments to a function:
+</p>
+<pre>function alertMe(text, text2) {
+alert(text);
+alert(text2);
+}
+</pre>
+<h2><span class="mw-headline" id="Cookies_Related">Cookies Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D9&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<dl><dt>Gaining Cookies</dt>
+<dd></dd></dl>
+<p>To change the amount of cookies in bank, use:
+</p>
+<pre>Game.cookies = (<u>amount)</u>;
+</pre>
+<p>To add more cookies to the existing amount in bank, use:
+</p>
+<pre>Game.Earn(<u>amount adding</u>);
+</pre>
+<dl><dt>Removing Cookies</dt>
+<dd></dd></dl>
+<p>To remove a specific amount of cookies, use:
+</p>
+<pre>Game.cookies - (<u>amount removing)</u>;
+</pre>
+<dl><dt>Infinity Cookies</dt>
+<dd></dd></dl>
+<p>To make it look like you have infinity amount of cookies but you won't really, use:
+</p>
+<pre>Game.cookies = NaN;
+</pre>
+<p>To actually obtain Infinity cookies, use:
+</p>
+<pre>Game.cookies = Infinity;
+</pre>
+<p>Beware: The number of cookies displayed above the big cookie will not change from infinity if you reset the game and/or change the number of cookies in your bank. To fix this, reset the displayed number using:
+</p>
+<pre>Game.cookies = 0;
+</pre>
+<p>Also, you can clear your cookies forever without gaining more using:
+</p>
+<pre>Game.cookies = -Infinity; 
+</pre>
+<dl><dt>You can also use this function(just copy it and paste before usage) to raise the cookies to a power: function PowerOfCookies(power) {  &nbsp; &nbsp; //Raises your cookies to selected power  &nbsp; &nbsp; num=1  &nbsp; &nbsp; Game.cookiesPREV=Game.cookies;  &nbsp; &nbsp; while (true) {  &nbsp; &nbsp; &nbsp; &nbsp; Game.cookies=Game.cookiesPREV*Game.cookies;  &nbsp; &nbsp; &nbsp; &nbsp; if (num==power) {  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;  &nbsp; &nbsp; &nbsp; &nbsp; }  &nbsp; &nbsp; &nbsp; &nbsp; num++;  &nbsp; &nbsp; }  }</dt>
+<dt>And to use, type</dt>
+<dd>PowerOfCookies(power). In the parentheses, write your power.  WARNING!!! Usage of function more than one time without clearing will have irreversible consequences!!!   If this ruined your fun, copy and paste this function into console:  function clear() {</dd>
+<dt>Game.cookies=Game.cookiesPREV;  }  And to use it, write "clear()" into console.</dt>
+<dt></dt>
+<dt>Spawning Custom Golden Cookies</dt>
+<dd></dd></dl>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">
+var newShimmer=new Game.shimmer('gold',<u>&lt;force object type&gt;</u>,<u>&lt;nocount amount&gt;</u>); // &lt;no count amount&gt; default is <b>1</b> // &lt;force object type&gt; Default is <b>0</b>, so it should look something like <i><u>0,1</u></i>
+newShimmer.dur=<u>&lt;duration&gt;</u>; // duration of the cookie Default is: Math.ceil(Math.random()*3+1);
+newShimmer.life=<u>&lt;cookie life&gt;</u>; // &lt;cookie life&gt; default is Math.ceil(Game.fps*newShimmer.dur);
+newShimmer.force='<u>&lt;effect type&gt;</u>'; // effect when clicked
+newShimmer.sizeMult=<u>&lt;size of the cookie&gt;</u>; // default size is: Math.random()*0.75+0.25;
+</p></div>
+<dl><dt>Changing CpS</dt>
+<dd></dd></dl>
+<p>To change the CpS (will self-correct when new buildings/upgrades are bought), use:
+</p>
+<pre>Game.cookiesPs = (<u>CpS)</u>;
+</pre>
+<p>To make the effect stay until the page is refreshed, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.CalculateGains = function() {
+Game.cookiesPs = <u>&lt;CpS&gt;</u>;
+Game.computedMouseCps = Game.mouseCps();
+Game.recalculateGains = 0;
+};
+Game.recalculateGains = 1;</p></div>
+<dl><dt>Auto-Click Big Cookie</dt>
+<dd></dd></dl>
+<p>To auto-click the big cookie at a set interval, use:
+</p>
+<pre>window.autoClicker=setInterval(function(){Game.ClickCookie();Game.lastClick=(new Date().getTime())-(1000/50)},<u>&lt;milliseconds interval&gt;</u>);
+</pre>
+<p>To end this effect, use:
+</p>
+<pre>clearInterval(window.autoClicker);
+</pre>
+<dl><dt>Faster Auto-Click</dt>
+<dd></dd></dl>
+<p>The auto-click cheat above can only click as fast as the CPU can handle. To produce an even faster effect, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">var autoClicker = function(clicksAtOnce, repeatInterval) {
+var cheated = false;
+var intoTheAbyss = function() {
+if(!cheated) {
+cheated = true;
+for(var i = 0; i &lt; clicksAtOnce; i++) {
+Game.ClickCookie();
+Game.lastClick = 0;
+}
+cheated = false;
+};
+};
+return setInterval(intoTheAbyss, repeatInterval);
+};
+autoClicker(<u>&lt;amount of clicks&gt;</u>, <u>&lt;milliseconds interval&gt;</u>);</p></div>
+<dl><dt>Auto-Click Only During Click Frenzy</dt>
+<dd></dd></dl>
+<p>To enable auto-click only during the Click Frenzy, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+if (Object.keys(Game.buffs).filter(x=&gt;x!='Click frenzy').length&lt;Object.keys(Game.buffs).length) { 
+Game.ClickCookie();
+}}, <u>&lt;milliseconds interval&gt;</u>);</p></div>
+<dl><dt>Auto-Click Only During Buffs</dt></dl>
+<p>To enable auto-click while any buff is active (including the negative ones!), use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+window.buffsN = 0;
+for (var buff in Game.buffTypes) {
+if (Game.hasBuff(Game.buffTypes[buff].func().name) {window.buffsN += 1}
+}
+if (window.buffsN &gt; 0) Game.ClickCookie();
+}, <u>&lt;milliseconds interval&gt;</u>);</p></div>
+<dl><dt>AutoClick</dt>
+<dd></dd></dl>
+<p>Holding the assigned key (~) repeatedly clicks the object under the mouse:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">
+/** 
+* Summary: Upon activation clicks element under mouse.
+* @param {number} [rate] - Timeout between clicks in milliseconds; Default: 500
+* @author QtheConqueror
+*/
+function AutoClick(rate = 500) {
+if (window.attachEvent) {
+document.attachEvent("onmousemove", MouseMv);
+} else {
+document.addEventListener("mousemove", MouseMv, false);
+}
+document.addEventListener('keydown', KeyDown);
+
+/**
+* Summary: Listens for mouse movment and exports position to variables x &amp; y.
+* @param {Event} e 
+*/
+function MouseMv(e) {
+if (!e) e = window.event;
+
+if (typeof e.pageY == 'number') {
+x = e.pageX;
+y = e.pageY;
+} else {
+x = e.clientX;
+y = e.clientY;
+}
+}
+
+/**
+* Summary: Listens for keydown event
+* @param {Event} e 
+*/
+function KeyDown(e) {
+if (e.type == 'keydown') {
+var char = e.key
+if (char == '`' || char == '~') { 
+setTimeout(Click(x, y), rate);
+}
+}
+}
+
+/** 
+* Summary: Clicks element at postions (x, y) on document.
+* @param {number} x - X coordinate of document element.
+* @param {number} y - Y coordinate of document element.
+*/
+function Click(x, y) {
+document.elementFromPoint(x, y).click();
+}
+}
+setInterval(AutoClick(<u>&lt;milliseconds interval&gt;</u>), 10) // Set to listen every 10ms;
+</p></div>
+<p>Avalible on Greasy Fork: <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="https://greasyfork.org/en/scripts/396627-autoclick">AutoClick</a>
+</p>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Buildings_Related">Buildings Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D10&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<dl><dt>Prices Stay at Base Price</dt>
+<dd></dd></dl>
+<p>If you want all the prices to stay at base price despite amount owned, use:
+</p>
+<pre>Game.priceIncrease = 1;
+</pre>
+<dl><dt>All Buildings Are Free</dt>
+<dd></dd></dl>
+<p>If you want to make all buildings completely free, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.ObjectsById.forEach(function (e) {
+e.basePrice = 0;
+e.refresh();
+});
+Game.storeToRebuild = 1;</p></div>
+<dl><dt>Refill Grimoire Magic</dt>
+<dd></dd></dl>
+<pre>Game.Objects['Wizard tower'].minigame.magic = Infinity;
+</pre>
+<dl><dt>Infinity Grimoire Magic</dt>
+<dd></dd></dl>
+<pre>Game.Objects['Wizard tower'].minigame.magic = -1;
+</pre>
+<dl><dt>Refill Worship Swaps</dt>
+<dd></dd></dl>
+<pre>Game.Objects['Temple'].minigame.swaps = 3;]
+</pre>
+<dl><dt>Infinity Worship Swaps</dt>
+<dd></dd></dl>
+<pre>Game.Objects['Temple'].minigame.swaps = Infinity;] 
+</pre>
+<dl><dt>Unlock all seeds on Farm as if Ruin The Fun was enabled</dt>
+<dd></dd></dl>
+<pre>Game.Objects['Farm'].minigame.onRuinTheFun(); 
+</pre>
+<dl><dt>Change Profits</dt>
+<dd></dd></dl>
+<pre>Game.Objects['Bank'].minigame.profit = &lt;amount&gt;;
+</pre>
+<dl><dt>Upgrade Buildings (Sugar Lump)</dt>
+<dd></dd></dl>
+<pre>Game.ObjectsById[&lt;index&gt;].level = &lt;amount&gt;; Game.recalculateGains=1;
+</pre>
+<dl><dt>Sacrifice Towers</dt>
+<dd></dd></dl>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">for (var i in Game.Objects){
+Game.Objects[i].sacrifice(1);
+}</p></div>
+<dl><dt>Build N Buildings</dt>
+<dd></dd></dl>
+<p>If you want to build a custom number of buildings, N, use:
+</p>
+<pre>Game.buyBulk=N;
+</pre>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span id="Golden.2FWrath_Cookies_Related"></span><span class="mw-headline" id="Golden/Wrath_Cookies_Related">Golden/Wrath Cookies Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D11&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Note that the <a href="/wiki/Wrath_Cookie" title="Wrath Cookie">Wrath Cookie</a> counts as a golden cookie as far as the game coding goes, therefore the following scripts also apply on Wrath Cookies. <b>If you want all the Wrath Cookies to behave like golden cookies (prevent Ruin and Clot), simply remove the "<kbd>/*</kbd>" and the "<kbd>*/</kbd>" in each script.</b>
+</p>
+<dl><dt>Spawn a Golden Cookie</dt>
+<dd></dd></dl>
+<p><u><b>(Working and Updated as of 11/28/17)</b></u>
+</p><p>To spawn a golden cookie, use:
+</p>
+<pre>var newShimmer=new Game.shimmer("golden");
+</pre>
+<p>If you want to spawn a golden cookie that starts a cookie chain, add the following script in addition to the ones provided above:
+</p>
+<pre>Game.shimmer.chain = <u>&lt;stage&gt;</u>;
+</pre>
+<p>If you want to start the cookie chain at 6 cookies, use "1" as the stage. 66 cookies = "2", 666 cookies = "3", and so on.
+</p>
+<dl><dt>Golden Cookies with No Delay</dt>
+<dd></dd></dl>
+<p>If you want the golden cookies to spawn one after another without delay, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+Game.shimmer.wrath = 0;
+Game.shimmer.delay = 0;
+}, 1);</p></div>
+<dl><dt>Get Golden Cookie Effects without a cookie</dt>
+<dd></dd></dl>
+<p>To give yourself a multiplier without a golden cookie, use:
+</p>
+<pre>var effectDurMod=1;&nbsp;Game.gainBuff('&lt;effect&gt;',Math.ceil(&lt;seconds it lasts&gt;*effectDurMod),&lt;multiplier amount&gt;); 
+</pre>
+<dl><dt>Remove Buffs/Debuffs</dt></dl>
+<p>To remove all status effects, use:
+</p>
+<pre>for (let i in Game.buffs) Game.buffs[i].time = 1;
+</pre>
+<p>This will clear all effects, good and bad.
+</p>
+<dl><dt>Set Golden Cookie Clicks</dt>
+<dd></dd></dl>
+<p>If you just want to set the amount of golden cookies clicked, use:
+</p>
+<pre>Game.goldenClicksLocal = <u>&lt;amount&gt;</u>;
+</pre>
+<p>If you want to earn the related achievements, use one of the auto-click's below.
+</p>
+<dl><dt>Auto-Click Golden Cookies</dt>
+<dd></dd></dl>
+<p>If you want the golden cookies to be auto-clicked as soon as they appear, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+Game.shimmers.forEach(function(shimmer) {
+if (shimmer.type == "golden") { shimmer.pop() }
+})
+}, 500);</p></div>
+<p>Alternatively, if you only want to click golden cookies, and not wrath cookies as they appear, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+Game.shimmers.forEach(function(shimmer)
+{
+if(shimmer.type == "golden" &amp;&amp; shimmer.wrath == 0)
+{
+shimmer.pop()
+}
+})
+}, 500);</p></div>
+<dl><dt>Auto-Spawn and Click Golden Cookies</dt>
+<dd></dd></dl>
+<p>If you want to automatically spawn and click a set amount of golden cookies instantaneously, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">for (var i = 0; i &lt; <u>&lt;amount&gt;</u>; i++) {
+(new Game.shimmer('golden',{noWrath:true})).pop();
+}</p></div>
+<p>To spawn an amount as well as increment the cookies clicked stat and reset the spawn timer, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">for (var i = 0; i &lt; <u>&lt;amount&gt;</u>;; i++) {
+var newShimmer = new Game.shimmer('golden',{noWrath:true});
+newShimmer.spawnLead=1;
+newShimmer.pop();
+}</p></div>
+<p>If you want to automatically click all spawned cookies then spawn a cookie at set interval, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+/*Game.shimmers.forEach(function(shimmer){shimmer.wrath = 0});*/
+Game.shimmers.forEach(function(shimmer) {
+if(shimmer.type=="golden") { shimmer.pop(); }
+});
+Game.shimmerTypes.golden.time = Game.shimmerTypes.golden.maxTime;
+}, <u>&lt;milliseconds interval&gt;</u>);</p></div>
+<dl><dt>Frenzy</dt>
+<dd></dd></dl>
+<p>To produce a customized Frenzy effect, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">var time = <u>&lt;seconds&gt;</u>;
+Game.frenzy = Game.fps * time;
+Game.frenzyPower = <u>&lt;multiplier&gt;</u>;
+Game.recalculateGains = 1;
+Game.Popup('Frenzy! Cookie production x' + Game.frenzyPower + ' for ' + time + ' seconds!');</p></div>
+<dl><dt>Clicking Frenzy</dt>
+<dd></dd></dl>
+<p>To produce a customized Clicking Frenzy effect, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">var time = <u>&lt;seconds&gt;</u>;
+Game.clickFrenzy = Game.fps * time;
+Game.recalculateGains = 1;
+Game.Popup('Click frenzy! Clicking power x777 for ' + time + ' seconds!');</p></div>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Grandmapocalypse_Related">Grandmapocalypse Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D12&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<dl><dt>Change Elder Pledge Time Left</dt>
+<dd></dd></dl>
+<p>If you want to change the time remained on the Elder Pledge, use:
+</p>
+<pre>Game.pledgeT = <u>&lt;minutes&gt;</u> * 60 * Game.fps;
+</pre>
+<dl><dt>Auto-Buy Elder Pledge</dt>
+<dd></dd></dl>
+<p>If you want to automatically buy Elder Pledge as it becomes available, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+if (Game.UpgradesInStore.indexOf(Game.Upgrades["Elder Pledge"])&nbsp;!= -1) {
+Game.Upgrades["Elder Pledge"].buy();
+}
+}, 500);</p></div> 
+<dl><dt>Instantly kill Wrinklers</dt>
+<dd></dd></dl>
+<p>To instantly kill all wrinklers as soon as they spawn, such as for the Moistburster achievement:
+</p>
+<pre>Game.registerHook('logic', () =&gt; { Game.wrinklers.forEach(me =&gt; me.hp -= Number.MAX_VALUE) });
+</pre>
+<dl><dt>Decrease Wrinkler limit</dt>
+<dd></dd></dl>
+<p>If you want less Wrinklers writhing on your cookie at once:
+</p>
+<pre>Game.wrinklerLimit = &lt;value less than max wrinklers&gt;;
+</pre>
+<p>Note that this command cannot increase the Wrinkler limit past your current maximum.
+</p><p>To prevent wrinklers from spawning altogether:
+</p>
+<pre>Game.spawnWrinkler = () =&gt; { return; }
+</pre>
+<dl><dt>Spawn All Wrinklers</dt>
+<dd></dd></dl>
+<p>If you want to instantly spawn all twelve wrinklers so you can get the bonus after letting them feed a while:
+</p>
+<pre>for (i = 0; i &lt; Game.wrinklers.length; i++) { while (Game.wrinklers[i].phase &lt; 1) Game.wrinklers[i].phase += 1 }
+</pre>
+<dl><dt>Make All Wrinklers Shiny</dt>
+<dd></dd></dl>
+<p>If you want to make all currently existent wrinklers shiny:
+</p>
+<pre>for (i = 0; i &lt; Game.wrinklers.length; i++) { Game.wrinklers[i].type = Game.wrinklers[i].type || 1 }
+</pre>
+<p>Or, if you want to instantly spawn all twelve wrinklers and make them shiny:
+</p>
+<pre>for (i = 0; i &lt; Game.wrinklers.length; i++) { Game.wrinklers[i].phase = Game.wrinklers[i].type = 1; }
+</pre>
+<dl><dt>Bingo Center</dt></dl>
+<p>If you want to instantly unlock the next Bingo Center upgrade:
+</p>
+<pre>setInterval(function(){Game.researchT=0;}, 1000);
+</pre>
+<p>Note: Does <b>not</b> unlock the Bingo Center if locked
+</p>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Achievements_Related">Achievements Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D13&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>There are two ways to refer to an achievement: its ID and its name. You must type the name EXACTLY as it appears in game for these scripts to work, including capitalization. If you are concerned about typing the name wrong, copy it from the table at the <a href="/wiki/Cheating#References" title="Cheating">bottom of this page</a>, or just use the ID.
+</p>
+<dl><dt>Unlocking an Achievement</dt>
+<dd></dd></dl>
+<p>If you want to unlock an achievement, use:
+</p>
+<pre>Game.Win(<u>&lt;name&gt;</u>);
+</pre>
+<p>or
+</p>
+<pre>Game.Win(Game.AchievementsById[<u>&lt;ID&gt;</u>].name);
+</pre>
+<dl><dt>Unlocking All Achievements</dt>
+<dd></dd></dl>
+<p>If you want to unlock every single achievement, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.AchievementsById.forEach(function(e) {
+// if (e.hide&nbsp;!= 3)
+Game.Win(e.name);
+});</p></div>
+<p>If you only want to unlock non-shadow achievements, remove the double slash (<kbd>//</kbd>);
+</p>
+<dl><dt>Removing an Achievement</dt>
+<dd></dd></dl>
+<p>If you want to remove an achievement, use:
+</p>
+<pre>Game.Achievements[<u>&lt;name&gt;</u>].won = 0;
+</pre>
+<p>or
+</p>
+<pre>Game.AchievementsById[<u>&lt;ID&gt;</u>].won = 0;
+</pre>
+<dl><dt>Removing All Achievements</dt>
+<dd></dd></dl>
+<p>If you want to remove all the achievements, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.AchievementsById.forEach(function(e) {
+// if (e.hide == 3)
+e.won = 0;
+});</p></div>
+<p>If you only want to remove shadow achievements, remove the double slash (<kbd>//</kbd>);
+</p><p><b>Note:</b> Removing an achievement won't reduce your milk percentage.
+</p>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Milk_Progress">Milk Progress</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D14&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>To Change your milk progress, use:
+</p>
+<pre>Game.milkProgress=&lt;progress amount&gt;;
+</pre>
+<h2><span class="mw-headline" id="Upgrades_Related">Upgrades Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D15&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Similar to achievements, upgrades can also be referred by either ID or name. A list of them can also be found at the <a href="/wiki/Cheating#References" title="Cheating">bottom of this page</a>.
+</p>
+<dl><dt>Unlocking/Buying an Upgrade</dt>
+<dd></dd></dl>
+<p>If you want to unlock a single upgrade, use:
+</p>
+<pre>Game.Unlock(Game.UpgradesById[<u>&lt;ID&gt;</u>].name);
+</pre>
+<p>or
+</p>
+<pre>Game.Unlock(<u>&lt;name&gt;</u>);
+</pre>
+<p>If you want to unlock AND buy an upgrade, use:
+</p>
+<pre>Game.UpgradesById[<u>&lt;ID&gt;</u>].earn()
+</pre>
+<p>or
+</p>
+<pre>Game.Upgrades[<u>&lt;name&gt;</u>].earn()
+</pre>
+<dl><dt>Unlocking/Buying All Upgrades</dt>
+<dd></dd></dl>
+<p>If you want to unlock all upgrades, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.UpgradesById.forEach(function(e) {
+Game.Unlock(e.name);
+</p></div>
+<p>If you want to enable all upgrades, use;
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">
+Game.UpgradesById.forEach(function(i) {if (i.bought === 0) { Game.cookies +=i.basePrice; i.buy(); }})
+</p></div>
+<p>If you want to unlock AND obtain all upgrades, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.UpgradesById.forEach(function(e) {
+if (e.bought === 0) e.earn();
+});</p></div>
+<p>Adding cursors:
+</p>
+<pre>Game.Objects['Cursor'].amount = &lt;amount of cursors&gt;;
+</pre>
+<dl><dt>Removing an Upgrade</dt>
+<dd></dd></dl>
+<p>If you want to remove an upgrade, use:
+</p>
+<pre>Game.Upgrades[<u>&lt;name&gt;</u>].bought = 0;
+</pre>
+<p>or
+</p>
+<pre>Game.UpgradesById[<u>&lt;ID&gt;</u>].bought = 0;
+</pre>
+<dl><dt>Free Upgrades</dt>
+<dd></dd></dl>
+<p>If you want to make all upgrades completely free, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.UpgradesById.forEach(function (e) {
+e.basePrice = 0;
+});
+Game.upgradesToRebuild = 1;</p></div>
+<dl><dt>Instant Research</dt>
+<dd></dd></dl>
+<p>If you want to make all researches instant, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+Game.researchT = 0;
+}, 1);</p></div>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Heavenly_Chips_Related">Heavenly Chips Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D16&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>If you want to change the amount of heavenly chips temporarily, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.prestige = [];
+Game.prestige['Heavenly chips'] = <u>&lt;amount&gt;</u>;</p></div>
+<p>This will make it so that when you refresh the page, the amount of heavenly chips returns back to normal. If you want it to be permanent, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">var nhc = <u>&lt;amount&gt;</u>;
+Game.cookiesReset = nhc * (nhc + 1) * 1e12 / 2;
+Game.CalculatePrestige();</p></div>
+<p>Use this code to pull up a menu where you have the option to set your Heavenly Chips. (Note, the game says the menu can be only be used once. Disregard it. This code can be used as many times as you want to.)
+</p>
+<pre>Game.FreeHeavenlyChips();
+</pre>
+<p>If you want to obtain the maximum amount of heavenly chips possible permanently, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.cookiesReset = Number.MAX_VALUE;
+Game.CalculatePrestige();</p></div>
+<p>If you want to gain infinity heavenly chips, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">Game.prestige = [];
+Game.prestige['Heavenly chips'] = Infinity;
+Game.prestige.ready = 1;
+Game.recalculateGains = 1;</p></div>
+<p>Note: Changing the prestige level will not affect your amount of heavenly chips. If you want your heavenly chips amount to be correct, enter the following into the console.
+Game.heavenlyChips = Game.prestige - Game.heavenlyChipsSpent
+</p>
+<h2><span class="mw-headline" id="Dungeons_Related"><a href="/wiki/Dungeons" title="Dungeons">Dungeons</a> Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D17&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<dl><dt>Change Dungeon Level</dt>
+<dd></dd></dl>
+<p>If you want to change the dungeon level, use:
+</p>
+<pre>Game.Objects.Factory.dungeon.level = <u>&lt;level&gt;</u>;
+</pre>
+<p>The level affects amount of cookies rewarded and spawning of monsters. The new level goes into effect after the boss is defeated. 
+</p>
+<dl><dt>Change Dungeon Speed</dt>
+<dd></dd></dl>
+<p>If you want to change the speed at which the hero goes through the dungeon, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+Game.Objects['Factory'].dungeon.timer = 0;
+}, <u>&lt;milliseconds interval&gt;</u>);</p></div>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Sugar_Lump_Related">Sugar Lump Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D18&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<dl><dt>Set Sugar Lumps Amount</dt>
+<dd></dd></dl>
+<p>If you want to set your Sugar Lumps to a certain number, use:
+</p>
+<pre>Game.lumps = <u>&lt;amount&gt;</u>
+</pre>
+<dl><dt>Change Lump Variation</dt>
+<dd></dd></dl>
+<p>If you want to change a sugar lump to a bifuricated, golden, meaty, or caramelized lump, use:
+</p><p><i>Note that you will have to replace &lt;value&gt; with either 0 for normal, 1 for bifuricated, 2 for golden, 3 for meaty, or 4 for caramelized.</i>
+</p>
+<pre>Game.lumpCurrentType = <u>&lt;value&gt;</u>
+</pre>
+<dl><dt>No Sugar Lump Cooldown</dt>
+<dd></dd></dl>
+<p>To remove the cooldown on using sugar lumps to reset cooldowns (ex. spell cooldown, worship swap cooldown):
+</p>
+<pre>Game.canRefillLump = function() { return true; }
+</pre>
+<h2><span class="mw-headline" id="Utilities">Utilities</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D19&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Cosmetic_Tweaks">Cosmetic Tweaks</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D20&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h3>
+<dl><dt>Make the Game "Party"</dt>
+<dd></dd></dl>
+<center><big><big><big><i><b><u>EPILEPSY/SEIZURE WARNING</u></b></i></big></big></big></center><p><br>
+</p><center><big><i><b>BRIGHT, FLASHING, COLORFUL LIGHTS AND VIGOROUS SHAKING ARE INCLUDED</b></i></big></center>
+<p>To make your game rave like in a party, enter this command in the console:
+</p>
+<pre>Game.PARTY = true; 
+</pre>
+<dl><dt>How to Make Your Own News Ticker</dt>
+<dd></dd></dl>
+<p>To add custom tickers use the following code in the console (F12):
+</p>
+<pre>var customTickers=["<u>&lt;insert news here&gt;</u>","<u>&lt;insert more news here&gt;</u>","<u>&lt;insert even more news here&gt;</u>"];
+customTickersFunction=function() { return customTickers; }
+Game.customTickers.push(customTickersFunction);
+</pre>
+<p>To later add more tickers just write:
+</p>
+<pre>customTickers.push("<u>&lt;insert news here&gt;</u>");
+</pre>
+<dl><dt>Turn Big Cookie into Face Cookie</dt>
+<dd></dd></dl>
+<p>To add a grandma face on the big cookie (may be disturbing for some), use:
+</p>
+<pre>Game.addClass("elderWrath");
+</pre>
+<p>To remove this effect, refresh the page or use:
+</p>
+<pre>Game.removeClass("elderWrath");
+</pre>
+<dl><dt>Changing FPS</dt>
+<dd></dd></dl>
+<p>To change the FPS of the game, use:
+</p>
+<pre>Game.fps = <u>&lt;1000&gt;</u>;
+</pre>
+<p><b>Note:</b> This represents how many frames of animation you see per second and does not make the animations run more smoother. For example, setting this to 60 which is twice the default will make the animations run twice as fast, the opposite is also true. Also, changing this can cause <b>current buffs duration</b> and <b>current golden cookie spawn time</b> to be altered.
+</p>
+<dl><dt>Removing Cookie Noises</dt>
+<dd></dd></dl>
+<p>To remove the noise from clicking the big cookie, but keep other noises on, use:
+</p>
+<pre>Game.playCookieClickSound=function(){return};
+</pre>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h3><span class="mw-headline" id="Calculating_Cookies_at_a_Future_Time">Calculating Cookies at a Future Time</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D21&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This is not really a cheat, but can be somewhat useful at times. To find out how many cookies you'll have in bank at a given time, use:
+</p>
+<pre>alert(Game.cookies + (new Date("<u>&lt;YYYY-MM-DD HH:MM:SS&gt;</u>") - new Date().getTime()) / 1000 * Game.cookiesPs);
+</pre>
+<p>To find out how many cookies you'll have baked all-time at a given time, use:
+</p>
+<pre>alert(Game.cookiesEarned + (new Date("<u>&lt;YYYY-MM-DD HH:MM:SS&gt;</u>") - new Date().getTime()) / 1000 * Game.cookiesPs);
+</pre>
+<p>To find out how many heavenly chips you can get by resetting at a given time, use:
+</p>
+<pre>alert(Math.floor((Math.pow(1 + 8 * (Game.cookiesEarned + Game.cookiesReset + (new Date("<u>&lt;YYYY-MM-DD HH:MM:SS&gt;</u>") - new Date().getTime()) / 1000 * Game.cookiesPs) / 10e12, 0.5) - 1) / 2));
+</pre>
+<p>Note that this assumes that you do not click the big cookie, buy new upgrades/buildings, or click golden cookies in this time period.
+</p>
+<h3><span class="mw-headline" id="Golden_Cookies_Notifications">Golden Cookies Notifications</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D22&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h3>
+<dl><dt>Golden Cookie Title Bar Alert</dt>
+<dd></dd></dl>
+<p>To make it so that the title of the webpage changes to an exclamation point whenever a golden/red cookie appears, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">setInterval(function() {
+if (Game.shimmer.life &gt; 0) document.title = '!'
+}, 100);</p></div>
+<dl><dt>Golden Cookie Desktop Notification</dt>
+<dd></dd></dl>
+<p>To make it so that a desktop notification pops up whenever a golden/wrath cookie appears, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">if (window.webkitNotifications.checkPermission()) {
+function askPermission() {
+window.webkitNotifications.requestPermission();
+var element = document.getElementById('notifier_permission');
+element.parentNode.removeChild(element);
+}
+var ask = document.createElement('BUTTON');
+var askText = document.createTextNode('Ask for notification permission');
+ask.id = 'notifier_permission';
+ask.style.position = 'absolute';
+ask.style.zIndex = 99999999;
+ask.appendChild(askText);
+document.body.appendChild(ask);
+ask.onclick = askPermission;
+}
+Game.shimmer.spawn = (function() {
+var spawn = Game.shimmer.spawn;
+return function() {
+popup = webkitNotifications.createNotification('img/goldCookie.png', 'Cookie Clicker', 'A wild golden cookie appeared!');
+popup.show();
+setTimeout(function(){
+popup.cancel();
+}, '10000');
+spawn();
+};
+})();
+// source: <a target="_blank" rel="nofollow noreferrer noopener" class="external text" href="http://en.reddit.com/r/CookieClicker/comments/1myikg/quick_question_is_there_a_way_to_get_a_desktop/">Cookie Clicker Subreddit</a></p></div> 
+<dl><dt>Play Beep Sound when Golden Cookie Spawns</dt>
+<dd></dd></dl>
+<p>To make it so that a beeping sound is played whenever a golden/red cookie spawns, use:
+</p>
+<div class="mw-collapsible mw-collapsed mw-made-collapsible" style="background-color:#3a3a3a;color:white;border:1px solid #777;"><span class="mw-collapsible-toggle mw-collapsible-toggle-default mw-collapsible-toggle-collapsed" role="button" tabindex="0" aria-expanded="false"><a class="mw-collapsible-text">Expand</a></span>
+<div style="font-weight:bold;line-height:1.6;padding:5px;">Code</div>
+<p class="mw-collapsible-content" style="overflow: auto; white-space: pre; background-color: rgb(58, 58, 58); padding: 5px; color: white; display: none;">var alerted = false;
+setInterval(function () {
+if (Game.shimmer.time == 0) {
+if (alerted) return;
+alerted = true;
+var audio = new Audio("<a target="_blank" rel="nofollow noreferrer noopener" class="external free" href="http://soundbible.com/grab.php?id=1252&amp;type=wav">http://soundbible.com/grab.php?id=1252&amp;type=wav</a>");
+audio.volume = 0.7;
+audio.play();
+} else {
+alerted = false;
+}
+}, 100);</p></div>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h3><span class="mw-headline" id="Auto-Buying_Scripts">Auto-Buying Scripts</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D23&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>For instructions on using these scripts refer to <a href="/wiki/Cheating#Using_a_Cheat_Interface" title="Cheating">above</a>.
+</p>
+<dl><dt>Build Script Auto</dt></dl>
+<p><br>
+The script automatically buys the most effective item only in terms of cookies per second and price. It also tells you how long it'll take until it buys, based on your CPS. (Doesn't buy upgrades nor take manual clicks, especially golden cookie clicks, into consideration)<br>
+The original description above have been disputed as follows:
+</p>
+<ul><li>Certain upgrades are not taken into consideration in the calculations, although this may now be fixed.</li>
+<li>The script also allows for toggling the automatic buy function by pressing the A key.</li>
+<li>The script uses a proven formula (which includes your CPS rate) to calculate the order of buildings to be bought.</li></ul>
+<p>Link to source code: <a target="_blank" rel="nofollow noreferrer noopener" class="external free" href="http://pastebin.com/raw.php?i=V3ZkT6j2">http://pastebin.com/raw.php?i=V3ZkT6j2</a>
+</p>
+<dl><dt>Build Script Improved</dt>
+<dd></dd></dl>
+<p>This script is an improvement of Build Script Auto; it buys the most effective buildings or upgrades automatically and tells you details about it in the news bar. This script calculates the effectiveness of each building and each upgrades using the same formula as Build Script Auto. This script voluntarily ignores the Bingo Center because otherwise it would spam the screen with "research has begun" and bring you to the grandmapocalypse.<br>
+<span style="color:red;"><b>Executing this code may cause lag on some machines, if the cookie count is high.</b> </span><br>
+Link to source code: <a target="_blank" rel="nofollow noreferrer noopener" class="external free" href="http://pastebin.com/raw.php?i=Nd3Ms8Zy">http://pastebin.com/raw.php?i=Nd3Ms8Zy</a>  
+</p>
+<dl><dt>Build Script Improved*</dt>
+<dd></dd></dl>
+<p>Build Script performs exactly the same operation as the Build Script Y, except that it lags even less.<br>
+Link to source code: <a target="_blank" rel="nofollow noreferrer noopener" class="external free" href="http://pastebin.com/raw.php?i=N8g0TZ6P">http://pastebin.com/raw.php?i=N8g0TZ6P</a>
+<br>
+<b>Note:</b> If the script is activated at the start of a brand new game, you will immediately get the first 7 of the CpS achievements. Removing the achievements using the method <a href="/wiki/Cheating#Removing_an_Achievement" title="Cheating">shown here</a> technically does work but you will get them again almost instantly. Also, if it's activated after buying the Bingo Center or when One mind is available to be bought, it will spam "research has begun" and start the grandmapocalypse. This applies to both Improved and Improved*.
+</p>
+<dl><dt>Build Script Beta</dt>
+<dd></dd></dl>
+<p>This script present the same build mechanism as Build Script Improved, but it adds the possibility to keep 20 or 140 minutes (depending if you have the last golden cookie upgrade or not) worth of production, enabling the 'Lucky' effect to give you tons of cookies. Option is activated by default and can be removed by pressing 'G'.<br>
+Note that after buying an item, it won't have a full 140 minutes stock because of the production of the new building. But it is the optimized way.<br>
+There is currently 1 known problem: - On small screen the text indicating the new feature status is hidden.<br>
+Link to source code: <a target="_blank" rel="nofollow noreferrer noopener" class="external free" href="http://pastebin.com/raw.php?i=vjLKNs0c">http://pastebin.com/raw.php?i=vjLKNs0c</a>
+</p>
+<div class="ad-slot-placeholder incontent-leaderboard is-loading"><div class="advertisement-label" data-slot-name="incontent-boxad">Advertisement</div></div><h2><span class="mw-headline" id="Reindeer_Related">Reindeer Related</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D24&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>To auto click reindeer, use the following:
+</p>
+<pre>setInterval( function() { Game.shimmers.forEach(function(shimmer) { if (shimmer.type == 'reindeer') { shimmer.pop() } }) }, 500);
+</pre>
+<p>To spawn a reindeer based on timer (will count towards stats &amp; make a sound) use the following:
+</p>
+<pre>Game.shimmerTypes.reindeer.time = Game.shimmerTypes.reindeer.maxTime
+</pre>
+<p>or
+</p>
+<pre>(function(){var newShimmer=new Game.shimmer('reindeer'); newShimmer.spawnLead=1;Game.shimmerTypes['reindeer'].spawned=1;})();
+</pre>
+<p>To spawn a reindeer (the essence of redoubled luck way, won't count towards stats) use the following:
+</p>
+<pre>new Game.shimmer('reindeer');
+</pre>
+<h2><span class="mw-headline" id="Some_Codes_that_may_not_be_listed_on_here">Some Codes that may not be listed on here</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a title="Sign in to edit" class="mw-editsection-visualeditor" data-tracking-label="log-in-edit-section" data-action="edit-section" href="https://auth.fandom.com/signin?redirect=https%3A%2F%2Fcookieclicker.fandom.com%2Fwiki%2FCheating%3Fveaction%3Dedit%26section%3D25&amp;uselang=en" data-testid="log-in-edit-section"><svg class="wds-icon wds-icon-tiny"><use xlink:href="#wds-icons-pencil-tiny"></use></svg></a><span class="mw-editsection-bracket">]</span></span></h2>
+<pre>Game.Win('&lt;achievement name&gt;'); // unlock achievement
+Game.SetAllAchievs(1); // unlock all achievements
+Game.santaLevel=&lt;level&gt;; // set santa level
+Game.dragonLevel=&lt;level&gt;; // set dragon level
+Game.MaxSpecials(); // Max Specials
+Game.DebugUpgradeCpS(); // Debug Upgrades CpS
+Game.lumps = Game.lumps + 1; // +10 lumps
+Game.Ascend(); // Ascend
+Game.cookies/=1000;Game.cookiesEarned/=1000; // /1k
+Game.RuinTheFun(1); // Ruin the fun (UNLOCK EVERYTHING)
+Game.GetAllDebugs(); // Get All Debugs
+Game.cookies+=&lt;cookie amount&gt;; // Add cookies to your current cookie supply
+Game.cookiesPs=&lt;cookies per second amount&gt;; // Set your cookies per second
+Game.computedMouseCps=&lt;mouse cookies per second amount&gt;; // change your mouse cookies per second
+Game.SetAllUpgrade(1); // get all upgrades
+Game.SesameReset(); // reset game
+Game.Has('&lt;achievement name&gt;'); // Check if user has achievement
+Game.particlesUpdate(); // Update particles
+Game.mousePointer=0; // change mouse pointer
+Timer.track('milk'); // track milk timer
+Game.AscendTimer=&lt;time&gt;; // Change Ascend Timer
+Game.killShimmers(); // Remove all shimmers
+Game.Earn(&lt;cookie amount&gt;); // Set your cookie count
+Game.popups=0; // remove game popup notifications
+Game.HardReset(); // hard reset game
+Game.debugTimersOn=0; // turn on debug timers/off
+Game.OpenSesame(); // turn on sesame
+Game.Achievements['&lt;achievement name&gt;'].won=1; // unlock achievements
+Game.bakeryName="&lt;bakery name&gt;"; // set your bakery name
+Game.bakeryNameRefresh(); // refresh bakery name
+Game.DebuggingPrestige=false; // debug prestige
+Game.CalculateGains(); // calculate gains
+Game.computedMouseCps; // compute mouse cps
+Game.LoadSave(); // load save
+Game.LoadSave(local); // load local save
+Game.localStorageGet(Game.SaveTo); // save save
+Game.milkProgress = &lt;milk amount&gt;; // change your milk progress
+Game.Milk = &lt;amount&gt;; // Change your milk
+Game.buyBulk=&lt;1/10/100&gt;; // Change your x# buy amount
+Game.buyBulk=Game.buyBulkOld; // reset x# buy amount
+</pre>
+<table class="article-table" style="text-align:center; margin:2em 0; width:100%;">
+
+<tbody><tr>
+<th colspan="2" style="background:#7f5037; color:#fff; text-align:center;">Cookie Clicker game mechanics <div class="noprint plainlinks navbar" style="background:none; padding:0; font-weight:normal;; font-size:xx-small;">This box: <a href="/wiki/Template:MechNav" title="Template:MechNav"><span title="View this template" style="">view</span></a>&nbsp;<span style="font-size:80%;">•</span>&nbsp;<a target="_blank" rel="noreferrer noopener" class="text" href="https://cookieclicker.fandom.com/wiki/Template_talk:MechNav"><span title="Discuss this template" style="">talk</span></a>&nbsp;<span style="font-size:80%;">•</span>&nbsp;<a target="_blank" rel="noreferrer noopener" class="text" href="https://cookieclicker.fandom.com/wiki/Template:MechNav?action=edit"><span title="Edit this template" style=";">edit</span></a></div>
+</th></tr>
+<tr>
+<th style="background:#7f5037; color:#fff;">Cookies
+</th>
+<td><a href="/wiki/Cookie_Clicker" title="Cookie Clicker">Cookie Clicker</a> • <a href="/wiki/Big_Cookie" title="Big Cookie">Clicking</a> • <a href="/wiki/Building" title="Building">Buildings</a>
+</td></tr>
+<tr>
+<th style="background:#7f5037; color:#fff;">General
+</th>
+<td><a href="/wiki/Achievement" title="Achievement">Achievements</a> • <a href="/wiki/Golden_Cookie" title="Golden Cookie">Golden Cookies</a> • <a href="/wiki/Milk" title="Milk">Milk</a> • <a href="/wiki/Sugar_Lump" title="Sugar Lump">Sugar Lumps</a> • <a href="/wiki/News_Ticker" title="News Ticker">News Ticker</a> • <a href="/wiki/Options" title="Options">Options</a> • <strong class="mw-selflink selflink">Cheating</strong><br><a href="/wiki/Cookies_per_Second" title="Cookies per Second">Cookies per Second (CpS)</a> • <a href="/wiki/Cookies_per_Click" title="Cookies per Click">Cookies per Click (CpC)</a>
+</td></tr>
+<tr>
+<th style="background:#7f5037; color:#fff;">Upgrades
+</th>
+<td><a href="/wiki/Upgrades" title="Upgrades">Upgrades overview</a><br>Multipliers: <a href="/wiki/Upgrades#Flavored_Cookies" title="Upgrades">Flavored Cookies</a> • <a href="/wiki/Upgrades#Kitten_Upgrades" title="Upgrades">Kittens</a><br>Research: <a href="/wiki/Grandmapocalypse" title="Grandmapocalypse">Grandmapocalypse</a> • <a href="/wiki/Wrath_Cookie" title="Wrath Cookie">Wrath Cookies</a> • <a href="/wiki/Wrinkler" title="Wrinkler">Wrinklers</a> • <a href="/wiki/Shiny_wrinkler" class="mw-redirect" title="Shiny wrinkler">Shiny wrinklers</a>
+</td></tr>
+<tr>
+<th style="background:#7f5037; color:#fff;">Ascension
+</th>
+<td><a href="/wiki/Ascension" title="Ascension">Ascension</a> • <a href="/wiki/Heavenly_Chips" title="Heavenly Chips">Heavenly Chips</a> •  <a href="/wiki/Challenge_Mode" title="Challenge Mode">Challenge Mode</a> • <a href="/wiki/Krumblor" title="Krumblor">Krumblor</a>
+</td></tr>
+<tr>
+<th style="background:#7f5037; color:#fff;">Seasons
+</th>
+<td><a href="/wiki/Seasons" title="Seasons">Seasons overview</a><br><a href="/wiki/Valentine%27s_Day_season" title="Valentine's Day season">Valentine's Day</a> • <a href="/wiki/Business_Day_season" title="Business Day season">Business Day</a> • <a href="/wiki/Easter_season" title="Easter season">Easter</a> • <a href="/wiki/Halloween_season" title="Halloween season">Halloween</a> • <a href="/wiki/Christmas_season" title="Christmas season">Christmas</a>
+</td></tr>
+<tr>
+<th style="background:#7f5037; color:#fff;">Minigames
+</th>
+<td><a href="/wiki/Minigame" title="Minigame">Minigames overview</a><br><a href="/wiki/Garden" title="Garden">Garden</a> • <a href="/wiki/Stock_Market" title="Stock Market">Stock Market</a> • <a href="/wiki/Pantheon" title="Pantheon">Pantheon</a> • <a href="/wiki/Grimoire" title="Grimoire">Grimoire</a> • <a href="/wiki/Dungeons" title="Dungeons">Dungeons</a> (Beta)
+</td></tr>
+<tr>
+<th style="background:#7f5037; color:#fff;">Further reading
+</th>
+<td><a href="/wiki/Category:Gameplay" title="Category:Gameplay">Gameplay</a>
+</td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20241231133015
+Cache expiry: 1209600
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.058 seconds
+Real time usage: 0.064 seconds
+Preprocessor visited node count: 711/1000000
+Post‐expand include size: 16617/2097152 bytes
+Template argument size: 616/2097152 bytes
+Highest expansion depth: 10/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 972/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   13.446      1 -total
+32.69%    4.395      1 Template:MechNav
+23.68%    3.184      1 Template:Navbar
+11.81%    1.588     41 Template:!CollapsibleCode
+10.90%    1.465      1 Template:For
+10.35%    1.392      2 Template:Transclude
+9.90%    1.332     41 Template:CollapsibleCode!
+8.07%    1.085      1 Template:Hover
+-->
+
+<!-- Saved in parser cache with key prod_cookieclicker:pcache:idhash:2291-0!sseVary=RegularPage!FandomDesktop!LegacyGalleries and timestamp 20241231133015 and revision id 164019.
+-->
+</div></div>					</div>
